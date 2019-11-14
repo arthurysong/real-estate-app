@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# t.string :name
+# t.string :median_homeprice
+# t.string :population
+# t.string :gdp
+# t.string :job_growth
+tucson = City.create(name: "Tucson", median_homeprice: 194100, population: 535677, gdp_per_capita: 33088, job_growth_percentage: 1.2);
 
 #85746 zipcode seed data
 zip_code_1 = Zipcode.create(digits: 85746);
@@ -20,3 +26,4 @@ school_2 = School.create(zipcode: zip_code_1, name: "Pima Rose Academy", rating:
 school_3 = School.create(zipcode: zip_code_1, name: "John E White Elementary School", rating: 5);
 school_4 = School.create(zipcode: zip_code_1, name: "Pistor Middle School", rating: 3);
 school_5 = School.create(zipcode: zip_code_1, name: "Valencia Middle School", rating: 2);
+
