@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+zip_code_1 = Zipcode.create(digits: 85746);
+
+# t.integer :zipcode_id
+# t.integer :price
+# t.string :address
+# t.integer :bedrooms
+# t.integer :bathrooms
+# t.integer :sqft
+# t.integer :year_built
+
+home_1 = Home.create(zipcode: zip_code_1, price: 175000, address: "3037 W Utah St, Tucson, AZ 85746", bedrooms: 3, bathrooms: 2, sqft: 1071, );

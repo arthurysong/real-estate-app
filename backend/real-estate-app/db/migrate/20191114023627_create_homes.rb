@@ -1,6 +1,7 @@
 class CreateHomes < ActiveRecord::Migration[6.0]
   def change
     create_table :homes do |t|
+      t.integer :zipcode_id
       t.integer :price
       t.string :address
       t.integer :bedrooms
