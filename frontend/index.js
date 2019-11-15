@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
             h1.innerHTML = json.name;
             p.innerHTML = 
                 `GDP per capita: ${json.gdp_per_capita}<br>
-                job growth in past year: ${json.job_growth_percentage}<br>
+                job growth in past year: ${json.job_growth_percentage}%<br>
                 population: ${json.population}<br>
                 median price of home: ${json.median_homeprice}`
         });

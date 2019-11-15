@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_182219) do
     t.integer "median_homeprice"
     t.integer "population"
     t.integer "gdp_per_capita"
-    t.integer "job_growth_percentage"
+    t.float "job_growth_percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

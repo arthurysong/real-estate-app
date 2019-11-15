@@ -5,7 +5,7 @@ class CreateCities < ActiveRecord::Migration[6.0]
       t.integer :median_homeprice
       t.integer :population
       t.integer :gdp_per_capita
-      t.integer :job_growth_percentage
+      t.float :job_growth_percentage
 
       t.timestamps
     end
