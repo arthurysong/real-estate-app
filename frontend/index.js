@@ -82,6 +82,12 @@ form.addEventListener('submit', function(event){
                 h6.style.display = 'block';
                 const homes_list = div.querySelector('#homes ul')
 
+                const info = div.querySelector('#zipcode-info');
+                info.innerHTML = 
+                    `
+                    median home price: $${zipcode.median_homeprice}
+                    `
+
                 for (const home of json.homes) {
                     const li = document.createElement('li');
                     li.innerHTML = 
