@@ -40,6 +40,7 @@ const form = document.querySelector('form');
 form.addEventListener('submit', function(event){
     event.preventDefault();
     const select = document.querySelector('select');  
+    
     fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
         .then(resp => resp.json())
         .then(json => {
