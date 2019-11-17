@@ -8,6 +8,29 @@ class City {
     }
 }
 
+class Zipcode {
+    constructor (json){
+        this.zipcode = json.zipcode;
+        this.home_prices = this.class.home_prices(json.homes);
+        
+    }
+
+    static home_prices(homes){
+        const home_prices = [];
+        for (const home of homes){
+            home_prices.push(home.price);
+        }
+        return home_prices;
+    }
+
+    static calculate_median_homeprice(homes) {
+        const home_prices = [];
+        for (const home of homes) {
+
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function(){
     // h1 = document.$('h1');
     // h1.innerHTML = 
@@ -54,6 +77,7 @@ form.addEventListener('submit', function(event){
                 const h6 = document.querySelector('#homes-sold')
                 h6.style.display = 'block';
                 const homes_list = div.querySelector('#homes ul')
+
                 for (const home of json.homes) {
                     const li = document.createElement('li');
                     li.innerHTML = 
