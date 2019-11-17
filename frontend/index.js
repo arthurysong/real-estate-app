@@ -10,8 +10,8 @@ class City {
 
 class Zipcode {
     constructor (json){
-        this.zipcode = json.zipcode;
-        this.home_prices = home_prices(json.homes);
+        this.digits = json.digits;
+        this.home_prices = this.home_prices(json.homes);
     }
 
     home_prices(homes){
@@ -71,12 +71,13 @@ form.addEventListener('submit', function(event){
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
+                const zipcode = new Zipcode(json);
                 const div = document.querySelector('div#zipcode');
                 const image = document.createElement('img');
-                image.src = "https://www.google.com/maps/vt/data=eUtTyowChxJsJCc8buLSYno30XHMulyA_z2dzQQzZHmj6-TpsseIMsrPeKTQcSPM-ctg9axD9nwjzxbTuBsjvt8NclWwHaoCqIW2ZRt6NuLA6jywxnyFVTwrTTgL3rAN2UfVi14-ELAU4x7El0XUEHzqIQq6R_JnYfT2Sp-h_naZ6_vLK57Yyag3iAWNX73Lc00gRQvJA_M73zZj-9ejrQ";
+                // image.src = "https://www.google.com/maps/vt/data=eUtTyowChxJsJCc8buLSYno30XHMulyA_z2dzQQzZHmj6-TpsseIMsrPeKTQcSPM-ctg9axD9nwjzxbTuBsjvt8NclWwHaoCqIW2ZRt6NuLA6jywxnyFVTwrTTgL3rAN2UfVi14-ELAU4x7El0XUEHzqIQq6R_JnYfT2Sp-h_naZ6_vLK57Yyag3iAWNX73Lc00gRQvJA_M73zZj-9ejrQ";
                 div.appendChild(image);
                 const h3 = div.querySelector('h3');
-                h3.innerHTML = json.digits;
+                h3.innerHTML = zipcode.digits;
                 const h6 = document.querySelector('#homes-sold')
                 h6.style.display = 'block';
                 const homes_list = div.querySelector('#homes ul')
