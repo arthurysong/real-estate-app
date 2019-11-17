@@ -50,8 +50,7 @@ form.addEventListener('submit', function(event){
             div.appendChild(image);
             const h3 = div.querySelector('h3');
             h3.innerHTML = json.digits;
-            const p = div.querySelector('p');
-            
+             
         })
 
 })
