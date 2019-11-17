@@ -32,6 +32,18 @@ class Zipcode {
             return sorted_homeprices[n];
         }
     }
+
+}
+
+class Home {
+    constructor(json){
+        this.address = json.address;
+        this.bathrooms = json.bathrooms;
+        this.bedrooms = json.bedrooms;
+        this.price = json.price;
+        this.sqft = json.sqft;
+        this.year_built = json.year_built;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function(){
