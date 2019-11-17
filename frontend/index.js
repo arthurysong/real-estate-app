@@ -51,7 +51,8 @@ form.addEventListener('submit', function(event){
                 div.appendChild(image);
                 const h3 = div.querySelector('h3');
                 h3.innerHTML = json.digits;
-
+                const h6 = document.querySelector('#homes-sold')
+                h6.style.display = 'block';
                 const homes_list = div.querySelector('#homes ul')
                 for (const home of json.homes) {
                     const li = document.createElement('li');
