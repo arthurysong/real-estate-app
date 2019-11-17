@@ -42,7 +42,18 @@ form.addEventListener('submit', function(event){
     const select = document.querySelector('select');  
     fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
         .then(resp => resp.json())
-        .then(json => console.log(json))
+        .then(json => {
+            console.log(json);
+            const div = document.querySelector('div#zipcode');
+            const image = document.createElement('img');
+            image.src = "https://www.google.com/maps/vt/data=eUtTyowChxJsJCc8buLSYno30XHMulyA_z2dzQQzZHmj6-TpsseIMsrPeKTQcSPM-ctg9axD9nwjzxbTuBsjvt8NclWwHaoCqIW2ZRt6NuLA6jywxnyFVTwrTTgL3rAN2UfVi14-ELAU4x7El0XUEHzqIQq6R_JnYfT2Sp-h_naZ6_vLK57Yyag3iAWNX73Lc00gRQvJA_M73zZj-9ejrQ";
+            div.appendChild(image);
+            const h3 = div.querySelector('h3');
+            h3.innerHTML = json.digits;
+            const p = div.querySelector('p');
+            
+        })
+
 })
 
 // function loadZipcodeInfo(){
