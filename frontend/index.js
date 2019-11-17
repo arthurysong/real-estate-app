@@ -56,10 +56,10 @@ form.addEventListener('submit', function(event){
                 const li = document.createElement('li');
                 li.innerHTML = 
                     `
-                    ${home.price}<br>
+                    $${home.price}<br>
                     ${home.address}<br>
                     ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
-                    ${home.year_built}
+                    year built: ${home.year_built}
                     `;
                 homes_list.appendChild(li);
             } 
