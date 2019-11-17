@@ -24,3 +24,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
         });
 })
+
+const form = document.querySelector('form');
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const select = document.querySelector('select');  
+    fetch('')
+})
+
+// function loadZipcodeInfo(){
+
+// }
