@@ -50,7 +50,19 @@ form.addEventListener('submit', function(event){
             div.appendChild(image);
             const h3 = div.querySelector('h3');
             h3.innerHTML = json.digits;
-             
+
+            const homes_list = div.querySelector('#homes ul')
+            for (const home of json.homes) {
+                const li = document.createElement('li');
+                li.innerHTML = 
+                    `
+                    ${home.price}<br>
+                    ${home.address}<br>
+                    ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
+                    ${home.year_built}
+                    `;
+                homes_list.appendChild(li);
+            } 
         })
 
 })
