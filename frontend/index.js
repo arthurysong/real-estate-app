@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
             for (const zipcode of json.zipcodes){
                 option = document.createElement('option');
                 option.innerHTML = zipcode.digits
-                option.value = zipcode.digits
+                option.value = zipcode.id
                 select.appendChild(option);
             }
             
@@ -29,7 +29,9 @@ const form = document.querySelector('form');
 form.addEventListener('submit', function(event){
     event.preventDefault();
     const select = document.querySelector('select');  
-    fetch('')
+    fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
+        .then(resp => resp.json())
+        .then(json => console.log(json))
 })
 
 // function loadZipcodeInfo(){
