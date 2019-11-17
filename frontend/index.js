@@ -11,11 +11,10 @@ class City {
 class Zipcode {
     constructor (json){
         this.zipcode = json.zipcode;
-        this.home_prices = this.class.home_prices(json.homes);
-        
+        this.home_prices = home_prices(json.homes);
     }
 
-    static home_prices(homes){
+    home_prices(homes){
         const home_prices = [];
         for (const home of homes){
             home_prices.push(home.price);
@@ -23,10 +22,14 @@ class Zipcode {
         return home_prices;
     }
 
-    static calculate_median_homeprice(homes) {
-        const home_prices = [];
-        for (const home of homes) {
-
+    get median_homeprice() {
+        const sorted_homeprices = this.home_prices.sort();
+        if (sorted_homeprices.length % 2 === 0) {
+            const n = sorted_homeprices.length / 2
+            return (sorted_homeprices[n - 1] + sorted_homeprices[n]) / 2
+        } else {
+            const n = sorted_homeprices.length / 2 - .5
+            return sorted_homeprices[n];
         }
     }
 }
