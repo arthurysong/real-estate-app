@@ -90,14 +90,20 @@ form.addEventListener('submit', function(event){
                 div.appendChild(image);
                 const h3 = div.querySelector('h3');
                 h3.innerHTML = zipcode.digits;
+
                 const h6 = document.querySelector('#homes-sold')
                 h6.style.display = 'block';
+                const schoolh6 = document.querySelector('#schools-header');
+                schoolh6.style.display = 'block';
+
                 const homes_list = div.querySelector('#homes ul')
 
                 const info = div.querySelector('#zipcode-info');
                 info.innerHTML = 
                     `
-                    median home price: $${zipcode.median_homeprice}
+                    median home price: $${zipcode.median_homeprice}<br>
+                    year built average: <br>
+                    sq ft average: <br>
                     `
 
                 for (const home of json.homes) {
