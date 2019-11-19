@@ -1,3 +1,5 @@
+// classes info --------------------------------------------------------------
+
 class City {
     constructor (name, gdp_per_capita, job_growth_percentage, population, median_homeprice) {
         this.name = name;
@@ -48,6 +50,10 @@ class Zipcode {
     get year_built_average(){
         return Math.round(this.homes.reduce((total, home) => total + home.year_built, 0) / this.homes.length)
     }
+
+    get sqft_average(){
+        return Math.round(this.homes.reduce((total, home) => total + home.sqft, 0) / this.homes.length)
+    }
 }
 
 class Home {
@@ -61,9 +67,15 @@ class Home {
     }
 }
 
+
+
+
+
+
+
+//=============================== executables ==================================================
+
 document.addEventListener('DOMContentLoaded', function(){
-    // h1 = document.$('h1');
-    // h1.innerHTML = 
     h1 = document.querySelector('h1');
     p = document.querySelector('p');
     fetch('http://127.0.0.1:3000/cities/1')
@@ -100,9 +112,9 @@ form.addEventListener('submit', function(event){
                 console.log(json);
                 const zipcode = new Zipcode(json);
                 const div = document.querySelector('div#zipcode');
-                const image = document.createElement('img');
+                // const image = document.createElement('img');
                 // image.src = "https://www.google.com/maps/vt/data=eUtTyowChxJsJCc8buLSYno30XHMulyA_z2dzQQzZHmj6-TpsseIMsrPeKTQcSPM-ctg9axD9nwjzxbTuBsjvt8NclWwHaoCqIW2ZRt6NuLA6jywxnyFVTwrTTgL3rAN2UfVi14-ELAU4x7El0XUEHzqIQq6R_JnYfT2Sp-h_naZ6_vLK57Yyag3iAWNX73Lc00gRQvJA_M73zZj-9ejrQ";
-                div.appendChild(image);
+                // div.appendChild(image);
                 const h3 = div.querySelector('h3');
                 h3.innerHTML = zipcode.digits;
 
@@ -118,10 +130,10 @@ form.addEventListener('submit', function(event){
                     `
                     median home price: $${zipcode.median_homeprice}<br>
                     year built average: ${zipcode.year_built_average}<br>
-                    sq ft average: <br>
+                    sq ft average: ${zipcode.sqft_average}<br>
                     `
 
-                for (const home of json.homes) {
+                for (const home of zipcode.homes) {
                     const li = document.createElement('li');
                     li.innerHTML = 
                         `
@@ -132,10 +144,10 @@ form.addEventListener('submit', function(event){
                         `;
                     homes_list.appendChild(li);
                 } 
+
+                // displaying info for schools and schools related info ****
+
+                
             })
     }
 })
-
-// function loadZipcodeInfo(){
-
-// }
