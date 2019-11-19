@@ -170,3 +170,13 @@ function displayListOfHomes(zipcode){
         homes_list.appendChild(li);
     } 
 }
+
+function displayListOfSchools(zipcode){
+    const schools_list = document.querySelector('#schools ul')
+    schools_list.innerHTML = "";
+    for (const school of zipcode.schools){
+        const li = document.createElement('li');
+        li.innerHTML = `${school.name}, rated ${school.rating}/10`;
+        schools_list.appendChild(li);
+    }
+}
