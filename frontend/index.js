@@ -14,7 +14,6 @@ class Zipcode {
     constructor (json){
         this.digits = json.digits;
         this.homes = this.homes(json.homes);
-        this.home_prices = this.home_prices(json.homes); // don't need???
     }
 
     homes(homes){
@@ -26,18 +25,8 @@ class Zipcode {
         return homes_list;
     }
 
-
-// maybe refactor the code below because we have a homes array now???
-    home_prices(homes){
-        const home_prices = [];
-        for (const home of homes){
-            home_prices.push(home.price);
-        }
-        return home_prices;
-    }
-
     get median_homeprice() {
-        const sorted_homeprices = this.home_prices.sort();
+        const sorted_homeprices = this.homes.map((home) => home.price).sort();
         if (sorted_homeprices.length % 2 === 0) {
             const n = sorted_homeprices.length / 2
             return (sorted_homeprices[n - 1] + sorted_homeprices[n]) / 2
