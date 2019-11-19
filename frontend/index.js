@@ -21,8 +21,11 @@ class Zipcode {
             const home_instance = new Home(home);
             homes.push(home);
         }
+        return homes;
     }
 
+
+// maybe refactor the code below because we have a homes array now???
     home_prices(homes){
         const home_prices = [];
         for (const home of homes){
@@ -42,6 +45,10 @@ class Zipcode {
         }
     }
 
+//use reduce to get year built average
+    get year_built_average(){
+        return this.homes.reduce((total, home) => total + home.year_built, 0)
+    }
 }
 
 class Home {
