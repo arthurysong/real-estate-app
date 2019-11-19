@@ -101,8 +101,12 @@ document.addEventListener('DOMContentLoaded', function(){
         });
 })
 
+
+// ============when zipcode selected and submited===============
+
 const form = document.querySelector('form');
 form.addEventListener('submit', function(event){
+
     event.preventDefault();
     const select = document.querySelector('select');  
     if (select.value !== '-') {
@@ -110,29 +114,17 @@ form.addEventListener('submit', function(event){
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
+                
                 const zipcode = new Zipcode(json);
+
                 const div = document.querySelector('div#zipcode');
-                // const image = document.createElement('img');
-                // image.src = "https://www.google.com/maps/vt/data=eUtTyowChxJsJCc8buLSYno30XHMulyA_z2dzQQzZHmj6-TpsseIMsrPeKTQcSPM-ctg9axD9nwjzxbTuBsjvt8NclWwHaoCqIW2ZRt6NuLA6jywxnyFVTwrTTgL3rAN2UfVi14-ELAU4x7El0XUEHzqIQq6R_JnYfT2Sp-h_naZ6_vLK57Yyag3iAWNX73Lc00gRQvJA_M73zZj-9ejrQ";
-                // div.appendChild(image);
-                const h3 = div.querySelector('h3');
-                h3.innerHTML = zipcode.digits;
 
-                const h6 = document.querySelector('#homes-sold')
-                h6.style.display = 'block';
-                const schoolh6 = document.querySelector('#schools-header');
-                schoolh6.style.display = 'block';
+                displayZipcodeHeader(zipcode);
+                unhideHeaders();
+                displayZipcodeStats(zipcode);
 
+                
                 const homes_list = div.querySelector('#homes ul')
-
-                const info = div.querySelector('#zipcode-info');
-                info.innerHTML = 
-                    `
-                    median home price: $${zipcode.median_homeprice}<br>
-                    year built average: ${zipcode.year_built_average}<br>
-                    sq ft average: ${zipcode.sqft_average}<br>
-                    `
-
                 for (const home of zipcode.homes) {
                     const li = document.createElement('li');
                     li.innerHTML = 
@@ -151,3 +143,25 @@ form.addEventListener('submit', function(event){
             })
     }
 })
+
+function unhideHeaders(){
+    const h6 = document.querySelector('#homes-sold')
+    h6.style.display = 'block';
+    const schoolh6 = document.querySelector('#schools-header');
+    schoolh6.style.display = 'block';
+}
+
+function displayZipcodeHeader(zipcode){
+    const h3 = document.querySelector('#zipcode-header');
+    h3.innerHTML = zipcode.digits;
+}
+
+function displayZipcodeStats(zipcode){
+    const info = document.querySelector('#zipcode-info');
+        info.innerHTML = 
+        `
+            median home price: $${zipcode.median_homeprice}<br>
+            year built average: ${zipcode.year_built_average}<br>
+            sq ft average: ${zipcode.sqft_average}<br>
+        `
+}
