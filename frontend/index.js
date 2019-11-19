@@ -116,16 +116,14 @@ form.addEventListener('submit', function(event){
                 console.log(json);
                 
                 const zipcode = new Zipcode(json);
-
+                console.log(zipcode);
                 displayZipcodeHeader(zipcode);
                 unhideHeaders();
                 displayZipcodeStats(zipcode);
                 displayListOfHomes(zipcode);
-                
 
                 // displaying info for schools and schools related info ****
 
-                
             })
     }
 })
@@ -154,6 +152,7 @@ function displayZipcodeStats(zipcode){
 
 function displayListOfHomes(zipcode){
     const homes_list = document.querySelector('#homes ul')
+    homes_list.innerHTML = "";
     for (const home of zipcode.homes) {
         const li = document.createElement('li');
         li.innerHTML = 
