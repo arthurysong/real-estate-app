@@ -16,12 +16,12 @@ class Zipcode {
     }
 
     homes(homes){
-        const homes = [];
+        const homes_list = [];
         for (const home of homes) {
             const home_instance = new Home(home);
-            homes.push(home);
+            homes_list.push(home);
         }
-        return homes;
+        return homes_list;
     }
 
 
@@ -45,9 +45,8 @@ class Zipcode {
         }
     }
 
-//use reduce to get year built average
     get year_built_average(){
-        return this.homes.reduce((total, home) => total + home.year_built, 0)
+        return Math.round(this.homes.reduce((total, home) => total + home.year_built, 0) / this.homes.length)
     }
 }
 
@@ -118,7 +117,7 @@ form.addEventListener('submit', function(event){
                 info.innerHTML = 
                     `
                     median home price: $${zipcode.median_homeprice}<br>
-                    year built average: <br>
+                    year built average: ${zipcode.year_built_average}<br>
                     sq ft average: <br>
                     `
 
