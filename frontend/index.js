@@ -11,7 +11,16 @@ class City {
 class Zipcode {
     constructor (json){
         this.digits = json.digits;
+        this.homes = this.homes(json.homes);
         this.home_prices = this.home_prices(json.homes);
+    }
+
+    homes(homes){
+        const homes = [];
+        for (const home of homes) {
+            const home_instance = new Home(home);
+            homes.push(home);
+        }
     }
 
     home_prices(homes){
