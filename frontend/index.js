@@ -53,6 +53,10 @@ class Zipcode {
     get sqft_average(){
         return Math.round(this.homes.reduce((total, home) => total + home.sqft, 0) / this.homes.length)
     }
+
+    get school_rating_average(){
+        return (this.schools.reduce((total, school) => total + school.rating, 0) / this.schools.length)
+    }
 }
 
 class Home {
@@ -152,6 +156,7 @@ function displayZipcodeStats(zipcode){
             median home price: $${zipcode.median_homeprice}<br>
             year built average: ${zipcode.year_built_average}<br>
             sq ft average: ${zipcode.sqft_average}<br>
+            school rating average: ${zipcode.school_rating_average}
         `
 }
 
