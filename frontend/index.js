@@ -117,25 +117,11 @@ form.addEventListener('submit', function(event){
                 
                 const zipcode = new Zipcode(json);
 
-                const div = document.querySelector('div#zipcode');
-
                 displayZipcodeHeader(zipcode);
                 unhideHeaders();
                 displayZipcodeStats(zipcode);
-
+                displayListOfHomes(zipcode);
                 
-                const homes_list = div.querySelector('#homes ul')
-                for (const home of zipcode.homes) {
-                    const li = document.createElement('li');
-                    li.innerHTML = 
-                        `
-                        $${home.price}<br>
-                        ${home.address}<br>
-                        ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
-                        year built: ${home.year_built}
-                        `;
-                    homes_list.appendChild(li);
-                } 
 
                 // displaying info for schools and schools related info ****
 
@@ -164,4 +150,19 @@ function displayZipcodeStats(zipcode){
             year built average: ${zipcode.year_built_average}<br>
             sq ft average: ${zipcode.sqft_average}<br>
         `
+}
+
+function displayListOfHomes(zipcode){
+    const homes_list = document.querySelector('#homes ul')
+    for (const home of zipcode.homes) {
+        const li = document.createElement('li');
+        li.innerHTML = 
+            `
+            $${home.price}<br>
+            ${home.address}<br>
+            ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
+            year built: ${home.year_built}
+            `;
+        homes_list.appendChild(li);
+    } 
 }
