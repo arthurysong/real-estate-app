@@ -13,16 +13,26 @@ class City {
 class Zipcode {
     constructor (json){
         this.digits = json.digits;
-        this.homes = this.homes(json.homes);
+        this.homes = this.returnHomeInstancesList(json.homes);
+        this.schools = this.returnSchoolInstancesList(json.schools)
     }
 
-    homes(homes){
+    returnHomeInstancesList(homes_json){
         const homes_list = [];
-        for (const home of homes) {
+        for (const home of homes_json) {
             const home_instance = new Home(home);
-            homes_list.push(home);
+            homes_list.push(home_instance);
         }
         return homes_list;
+    }
+
+    returnSchoolInstancesList(schools_json){
+        const schools_list = [];
+        for (const school of schools_json){
+            const school_instance = new School(school);
+            schools_list.push(school_instance);
+        }
+        return schools_list;
     }
 
     get median_homeprice() {
@@ -56,7 +66,12 @@ class Home {
     }
 }
 
-
+class School {
+    constructor(json){
+        this.name = json.name;
+        this.rating = json.rating;
+    }
+}
 
 
 
@@ -113,7 +128,7 @@ form.addEventListener('submit', function(event){
                 displayListOfHomes(zipcode);
 
                 // displaying info for schools and schools related info ****
-
+                displayListOfSchools(zipcode);
             })
     }
 })
