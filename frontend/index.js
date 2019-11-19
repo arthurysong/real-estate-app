@@ -14,7 +14,7 @@ class Zipcode {
     constructor (json){
         this.digits = json.digits;
         this.homes = this.homes(json.homes);
-        this.home_prices = this.home_prices(json.homes);
+        this.home_prices = this.home_prices(json.homes); // don't need???
     }
 
     homes(homes){
@@ -108,6 +108,7 @@ const form = document.querySelector('form');
 form.addEventListener('submit', function(event){
 
     event.preventDefault();
+
     const select = document.querySelector('select');  
     if (select.value !== '-') {
         fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
@@ -116,7 +117,7 @@ form.addEventListener('submit', function(event){
                 console.log(json);
                 
                 const zipcode = new Zipcode(json);
-                console.log(zipcode);
+                
                 displayZipcodeHeader(zipcode);
                 unhideHeaders();
                 displayZipcodeStats(zipcode);
