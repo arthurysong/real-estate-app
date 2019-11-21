@@ -11,6 +11,7 @@
 # t.string :gdp
 # t.string :job_growth
 tucson = City.create(name: "Tucson", median_homeprice: 194100, population: 535677, gdp_per_capita: 33088, job_growth_percentage: 1.2);
+san_bernardino = City.create(name: "San Bernardino", median_homeprice: 296200, population: 216995, gdp_per_capita: 29687, job_growth_percentage: 2.6)
 
 #85746 zipcode seed data
 zip_code_1 = Zipcode.create(city: tucson, digits: 85746);
