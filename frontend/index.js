@@ -93,8 +93,6 @@ const zipcode_select = zipcode_form.querySelector('select');
 //==== when document finished loading =======================================
 
 document.addEventListener('DOMContentLoaded', function(){
-    h1 = document.querySelector('h1');
-    p = document.querySelector('p');
     fetch('http://127.0.0.1:3000/cities')
         .then(resp => resp.json())
         .then(json => {
@@ -129,11 +127,37 @@ document.addEventListener('DOMContentLoaded', function(){
 // =============when city is selected and submitted = = = = = = = 
 
 city_form.addEventListener('submit', function(event){
-    
-    event.preventDefault();
 
-    
+    event.preventDefault();
+    if (city_select.value !== '-') {
+        fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+
+                const city = new City(json);
+                displayCityInfo(city);
+                unhideZipcodeDiv();
+            })
+    }
 })
+
+function displayCityInfo(city) {
+    const h1 = document.querySelector('#city h1');
+    const p = document.querySelector('#city p');
+
+    h1.innerHTML = city.name;
+    p.innerHTML = 
+        `GDP per capita: ${city.gdp_per_capita}<br>
+        job growth in past year: ${city.job_growth_percentage}%<br>
+        population: ${city.population}<br>
+        median price of home: ${city.median_homeprice}`
+}
+
+function unhideZipcodeDiv(){
+    const div = document.querySelector('#zipcode');
+    div.className = "";
+}
 
 // ============when zipcode selected and submited===============
 
@@ -142,7 +166,7 @@ zipcode_form.addEventListener('submit', function(event){
     event.preventDefault();
 
     if (zipcode_select.value !== '-') {
-        fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
+        fetch(`http://127.0.0.1:3000/zipcodes/${zipcode_select.value}`)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
