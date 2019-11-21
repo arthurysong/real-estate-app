@@ -84,6 +84,9 @@ class School {
 
 //=============================== executables ==================================================
 
+const city_form = document.querySelector('#city-form');
+const zipcode_form = document.querySelector('#zipcode-form');
+
 //==== when document finished loading =======================================
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -97,6 +100,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
             console.log(json)
             
+            const city_select = city_form.querySelector('select');
+            for (const city of json) {
+                const option = document.createElement('option')
+                option.innerHTML = city.name;
+                option.value = city.id;
+                city_select.appendChild(option);
+            }
             // const city = new City(json);
             // h1.innerHTML = city.name;
             // p.innerHTML = 
@@ -117,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // ============when zipcode selected and submited===============
 
-const form = document.querySelector('form');
 form.addEventListener('submit', function(event){
 
     event.preventDefault();
