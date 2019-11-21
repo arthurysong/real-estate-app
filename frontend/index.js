@@ -1,12 +1,12 @@
 // classes info --------------------------------------------------------------
 
 class City {
-    constructor (name, gdp_per_capita, job_growth_percentage, population, median_homeprice) {
-        this.name = name;
-        this.gdp_per_capita = gdp_per_capita;
-        this.job_growth_percentage = job_growth_percentage;
-        this.population = population;
-        this.median_homeprice = median_homeprice;
+    constructor (json) {
+        this.name = json.name;
+        this.gdp_per_capita = json.gdp_per_capita;
+        this.job_growth_percentage = json.job_growth_percentage;
+        this.population = json.population;
+        this.median_homeprice = json.median_homeprice;
     }
 }
 
@@ -58,6 +58,7 @@ class Zipcode {
         return (this.schools.reduce((total, school) => total + school.rating, 0) / this.schools.length)
     }
 }
+//a;lsdjkflaksdjf;lk;alsdkjflaksd
 
 class Home {
     constructor(json){
@@ -83,6 +84,8 @@ class School {
 
 //=============================== executables ==================================================
 
+//==== when document finished loading =======================================
+
 document.addEventListener('DOMContentLoaded', function(){
     h1 = document.querySelector('h1');
     p = document.querySelector('p');
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            const city = new City(json.name, json.gdp_per_capita, json.job_growth_percentage, json.population, json.median_homeprice);
+            const city = new City(json);
             h1.innerHTML = city.name;
             p.innerHTML = 
                 `GDP per capita: ${city.gdp_per_capita}<br>
@@ -130,8 +133,6 @@ form.addEventListener('submit', function(event){
                 unhideHeaders();
                 displayZipcodeStats(zipcode);
                 displayListOfHomes(zipcode);
-
-                // displaying info for schools and schools related info ****
                 displayListOfSchools(zipcode);
             })
     }
