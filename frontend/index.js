@@ -87,6 +87,9 @@ class School {
 const city_form = document.querySelector('#city-form');
 const zipcode_form = document.querySelector('#zipcode-form');
 
+const city_select = city_form.querySelector('select');
+const zipcode_select = zipcode_form.querySelector('select');
+
 //==== when document finished loading =======================================
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -100,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
             console.log(json)
             
-            const city_select = city_form.querySelector('select');
             for (const city of json) {
                 const option = document.createElement('option')
                 option.innerHTML = city.name;
@@ -124,15 +126,22 @@ document.addEventListener('DOMContentLoaded', function(){
         });
 })
 
+// =============when city is selected and submitted = = = = = = = 
+
+city_form.addEventListener('submit', function(event){
+    
+    event.preventDefault();
+
+    
+})
 
 // ============when zipcode selected and submited===============
 
-form.addEventListener('submit', function(event){
+zipcode_form.addEventListener('submit', function(event){
 
     event.preventDefault();
 
-    const select = document.querySelector('select');  
-    if (select.value !== '-') {
+    if (zipcode_select.value !== '-') {
         fetch(`http://127.0.0.1:3000/zipcodes/${select.value}`)
             .then(resp => resp.json())
             .then(json => {
