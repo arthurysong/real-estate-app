@@ -3,4 +3,9 @@ class CitiesController < ApplicationController
         city = City.find(params[:id])
         render json: city, include: [:zipcodes]
     end
+
+    def index
+        cities = City.all
+        render json: cities
+    end
 end

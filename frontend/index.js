@@ -89,26 +89,28 @@ class School {
 document.addEventListener('DOMContentLoaded', function(){
     h1 = document.querySelector('h1');
     p = document.querySelector('p');
-    fetch('http://127.0.0.1:3000/cities/1')
+    fetch('http://127.0.0.1:3000/cities')
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
-            const city = new City(json);
-            h1.innerHTML = city.name;
-            p.innerHTML = 
-                `GDP per capita: ${city.gdp_per_capita}<br>
-                job growth in past year: ${city.job_growth_percentage}%<br>
-                population: ${city.population}<br>
-                median price of home: ${city.median_homeprice}`
-            select = document.querySelector('select');
-            for (const zipcode of json.zipcodes){
-                option = document.createElement('option');
-                option.innerHTML = zipcode.digits
-                option.value = zipcode.id
-                select.appendChild(option);
-            }
-            
 
+//create select menu different options of cities on load ====================================
+
+            console.log(json)
+            
+            // const city = new City(json);
+            // h1.innerHTML = city.name;
+            // p.innerHTML = 
+            //     `GDP per capita: ${city.gdp_per_capita}<br>
+            //     job growth in past year: ${city.job_growth_percentage}%<br>
+            //     population: ${city.population}<br>
+            //     median price of home: ${city.median_homeprice}`
+            // select = document.querySelector('select');
+            // for (const zipcode of json.zipcodes){
+            //     option = document.createElement('option');
+            //     option.innerHTML = zipcode.digits
+            //     option.value = zipcode.id
+            //     select.appendChild(option);
+            // }
         });
 })
 
