@@ -84,9 +84,6 @@ class School {
 
 //=============================== executables ==================================================
 
-// const city_form = document.querySelector('#city-form');
-// const zipcode_form = document.querySelector('#zipcode-form');
-
 const city_select = document.querySelector('#city-select');
 const zipcode_select = document.querySelector('#zipcode-select');
 
@@ -96,8 +93,6 @@ document.addEventListener('DOMContentLoaded', function(){
     fetch('http://127.0.0.1:3000/cities')
         .then(resp => resp.json())
         .then(json => {
-
-//create select menu different options of cities on load ====================================
 
             console.log(json)
             
@@ -113,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function(){
 // =============when city is selected and submitted = = = = = = = 
 
 city_select.addEventListener('change', function(){
-    // console.log('change');
     if (city_select.value !== '-') {
         fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
             .then(resp => resp.json())
@@ -127,12 +121,6 @@ city_select.addEventListener('change', function(){
             })
     }
 })
-
-// city_form.addEventListener('submit', function(event){
-
-//     event.preventDefault();
-
-// })
 
 function displayCityInfo(city) {
     const h1 = document.querySelector('#city h1');
@@ -181,11 +169,6 @@ zipcode_select.addEventListener('change', function(){
             })
     }
 })
-// zipcode_form.addEventListener('submit', function(event){
-
-//     event.preventDefault();
-
-// })
 
 function unhideHeaders(){
     const h6 = document.querySelector('#homes-sold')
