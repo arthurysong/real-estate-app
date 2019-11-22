@@ -122,24 +122,35 @@ city_select.addEventListener('change', function(){
                 const city = new City(json);
 
                 displayCityInfo(city);
-                toggleZipcodeDiv();
+                showZipcodeDiv();
                 createOptionsForZipcodes(json);
             })
     } else {
-        hideCityInfo();
-        toggleZipcodeDiv();
+        makeCityInfoBlank();
+        hideZipcodeDiv();
+        removeZipcodeOptions();
     }
 })
 
-function hideCityInfo(){
-    city_info.classList.add('hidden');
+
+function removeZipcodeOptions(){
+    zipcode_select.innerHTML = `<option val='-'>-</option>`;
 }
 
-function toggleZipcodeDiv(){
+function makeCityInfoBlank(){
+    city_info.querySelector('h1').innerHTML = '';
+    city_info.querySelector('p').innerHTML = '';
+}
+
+function showZipcodeDiv(){
     const div = document.querySelector('#zipcode');
-    toggleDiv(div);
+    div.classList.remove('hidden');
 }
 
+function hideZipcodeDiv(){
+    const div = document.querySelector('#zipcode');
+    div.classList.add('hidden');
+}
 function displayCityInfo(city) {
     city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
