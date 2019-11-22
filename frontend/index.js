@@ -246,6 +246,8 @@ const homes_div = document.querySelector('#homes');
 const schools_button = document.querySelector('#see-schools');
 const schools_div = document.querySelector('#schools');
 
+const possible_div = document.querySelector('#possible-lists');
+
 createEventListenerForButton(homes_button, homes_div);
 createEventListenerForButton(schools_button, schools_div);
 
@@ -254,7 +256,7 @@ function createEventListenerForButton(button, div){
         event.preventDefault();
 
         toggleDiv(div);
-        hideOtherDivs();
+        hideOtherDivs(div);
     })
 }
 
@@ -263,5 +265,13 @@ function toggleDiv(div) {
         div.classList.remove('hidden')
     } else {
         div.classList.add('hidden');
+    }
+}
+
+function hideOtherDivs(current_showing_div) {
+    for (const list_div of possible_div.children) {
+        if (list_div !== current_showing_div) {
+            list_div.classList.add('hidden');
+        }
     }
 }
