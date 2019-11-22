@@ -242,8 +242,22 @@ function unhideButtons() {
 //========================= event listeners for buttons ==================
 
 const homes_button = document.querySelector('#see-homes');
+const homes_div = document.querySelector('#homes');
 const schools_button = document.querySelector('#see-schools');
+const schools_div = document.querySelector('#schools');
 
-function createEventListenerForButton(button){
-    
+function createEventListenerForButton(button, div){
+    button.addEventListener('click', function(event){
+        event.preventDefault();
+
+        toggleDiv(div);
+    })
+}
+
+function toggleDiv(div) {
+    if (div.classList.includes('hidden')) {
+        div.classList.remove('hidden')
+    } else {
+        div.classList.add('hidden');
+    }
 }
