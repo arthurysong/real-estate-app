@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 // =============when city is selected and submitted = = = = = = = 
+const city_info = document.querySelector('#city-info');
 
 city_select.addEventListener('change', function(){
     if (city_select.value !== '-') {
@@ -119,10 +120,17 @@ city_select.addEventListener('change', function(){
                 unhideZipcodeDiv();
                 createOptionsForZipcodes(json);
             })
+    } else {
+        hideCityInfo();
     }
 })
 
+function hideCityInfo(){
+    city_info.classList.add('hidden');
+}
+
 function displayCityInfo(city) {
+    city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
     const p = document.querySelector('#city p');
 
