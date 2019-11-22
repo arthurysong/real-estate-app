@@ -238,3 +238,12 @@ function unhideButtons() {
     const buttons_div = document.querySelector('#zipcode-info-buttons');
     buttons_div.className = "";
 }
+
+//========================= event listeners for buttons ==================
+
+const homes_button = document.querySelector('#see-homes');
+const schools_button = document.querySelector('#see-schools');
+
+function createEventListenerForButton(button){
+    
+}
