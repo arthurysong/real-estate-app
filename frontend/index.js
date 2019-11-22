@@ -123,15 +123,21 @@ city_select.addEventListener('change', function(){
 
                 displayCityInfo(city);
                 showZipcodeDiv();
+                makeZipcodeInfoBlank();
+                hideButtons();
                 createOptionsForZipcodes(json);
             })
     } else {
         makeCityInfoBlank();
         hideZipcodeDiv();
-        // removeZipcodeOptions();
         makeZipcodeInfoBlank();
     }
 })
+
+function hideButtons(){
+    const buttons_div = document.querySelector('#zipcode-info-buttons');
+    buttons_div.classList.add('hidden');
+}
 
 function makeZipcodeInfoBlank(){
     const h3 = document.querySelector('#zipcode-header');
@@ -139,10 +145,6 @@ function makeZipcodeInfoBlank(){
     h3.innerHTML = '';
     p.innerHTML = '';
 }
-
-// function removeZipcodeOptions(){
-//     zipcode_select.innerHTML = `<option val='-'>-</option>`;
-// }
 
 function makeCityInfoBlank(){
     city_info.querySelector('h1').innerHTML = '';
@@ -261,7 +263,7 @@ function displayListOfSchools(zipcode){
 
 function unhideButtons() {
     const buttons_div = document.querySelector('#zipcode-info-buttons');
-    buttons_div.className = "";
+    buttons_div.classList.remove('hidden');
 }
 
 //========================= event listeners for buttons ==================
