@@ -95,15 +95,19 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(json => {
 
             console.log(json)
-            
-            for (const city of json) {
-                const option = document.createElement('option')
-                option.innerHTML = city.name;
-                option.value = city.id;
-                city_select.appendChild(option);
-            }
+
+            createOptionsForCities(json);
         });
 })
+
+function createOptionsForCities(json){
+    for (const city of json) {
+        const option = document.createElement('option')
+        option.innerHTML = city.name;
+        option.value = city.id;
+        city_select.appendChild(option);
+    }
+}
 
 // =============when city is selected and submitted = = = = = = = 
 const city_info = document.querySelector('#city-info');
