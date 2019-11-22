@@ -129,9 +129,16 @@ city_select.addEventListener('change', function(){
         makeCityInfoBlank();
         hideZipcodeDiv();
         removeZipcodeOptions();
+        makeZipcodeInfoBlank();
     }
 })
 
+function makeZipcodeInfoBlank(){
+    const h3 = document.querySelector('#zipcode-header');
+    const p = document.querySelector('#zipcode-info');
+    h3.innerHTML = '';
+    p.innerHTML = '';
+}
 
 function removeZipcodeOptions(){
     zipcode_select.innerHTML = `<option val='-'>-</option>`;
