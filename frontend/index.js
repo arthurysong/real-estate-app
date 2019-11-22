@@ -174,6 +174,7 @@ zipcode_form.addEventListener('submit', function(event){
                 displayZipcodeStats(zipcode);
                 displayListOfHomes(zipcode);
                 displayListOfSchools(zipcode);
+                unhideButtons();
             })
     }
 })
@@ -202,8 +203,8 @@ function displayZipcodeStats(zipcode){
 }
 
 function displayListOfHomes(zipcode){
-    const homes_div = document.querySelector('#homes')
-    homes_div.className = '';
+    // const homes_div = document.querySelector('#homes')
+    // homes_div.className = '';
 
     const homes_list = document.querySelector('#homes ul')
     homes_list.innerHTML = "";
@@ -221,8 +222,8 @@ function displayListOfHomes(zipcode){
 }
 
 function displayListOfSchools(zipcode){
-    const schools_div = document.querySelector('#schools');
-    schools_div.className = "";
+    // const schools_div = document.querySelector('#schools');
+    // schools_div.className = "";
 
     const schools_list = document.querySelector('#schools ul')
     schools_list.innerHTML = "";
@@ -231,4 +232,9 @@ function displayListOfSchools(zipcode){
         li.innerHTML = `${school.name}, rated ${school.rating}/10`;
         schools_list.appendChild(li);
     }
+}
+
+function unhideButtons() {
+    const buttons_div = document.querySelector('#zipcode-info-buttons');
+    buttons_div.className = "";
 }
