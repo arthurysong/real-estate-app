@@ -116,17 +116,24 @@ city_select.addEventListener('change', function(){
                 console.log(json);
 
                 const city = new City(json);
+
                 displayCityInfo(city);
-                unhideZipcodeDiv();
+                toggleZipcodeDiv();
                 createOptionsForZipcodes(json);
             })
     } else {
         hideCityInfo();
+        toggleZipcodeDiv();
     }
 })
 
 function hideCityInfo(){
     city_info.classList.add('hidden');
+}
+
+function toggleZipcodeDiv(){
+    const div = document.querySelector('#zipcode');
+    toggleDiv(div);
 }
 
 function displayCityInfo(city) {
@@ -141,12 +148,8 @@ function displayCityInfo(city) {
         population: ${city.population}<br>
         median price of home: ${city.median_homeprice}`
 }
-
-function unhideZipcodeDiv(){
-    const div = document.querySelector('#zipcode');
-    div.className = "";
-}
-
+ 
+// need to work on this so zipcodes don't get duplicated when I unselect and reselect city
 function createOptionsForZipcodes(json){
     for (const zipcode of json.zipcodes){
         option = document.createElement('option');
