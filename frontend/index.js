@@ -202,6 +202,9 @@ function displayZipcodeStats(zipcode){
 }
 
 function displayListOfHomes(zipcode){
+    const homes_div = document.querySelector('#homes')
+    homes_div.className = '';
+
     const homes_list = document.querySelector('#homes ul')
     homes_list.innerHTML = "";
     for (const home of zipcode.homes) {
@@ -218,6 +221,9 @@ function displayListOfHomes(zipcode){
 }
 
 function displayListOfSchools(zipcode){
+    const schools_div = document.querySelector('#schools');
+    schools_div.className = "";
+
     const schools_list = document.querySelector('#schools ul')
     schools_list.innerHTML = "";
     for (const school of zipcode.schools){
