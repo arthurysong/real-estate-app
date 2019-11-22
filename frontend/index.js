@@ -84,11 +84,11 @@ class School {
 
 //=============================== executables ==================================================
 
-const city_form = document.querySelector('#city-form');
-const zipcode_form = document.querySelector('#zipcode-form');
+// const city_form = document.querySelector('#city-form');
+// const zipcode_form = document.querySelector('#zipcode-form');
 
-const city_select = city_form.querySelector('select');
-const zipcode_select = zipcode_form.querySelector('select');
+const city_select = document.querySelector('#city-select');
+const zipcode_select = document.querySelector('#zipcode-select');
 
 //==== when document finished loading =======================================
 
@@ -112,9 +112,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // =============when city is selected and submitted = = = = = = = 
 
-city_form.addEventListener('submit', function(event){
-
-    event.preventDefault();
+city_select.addEventListener('change', function(){
+    // console.log('change');
     if (city_select.value !== '-') {
         fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
             .then(resp => resp.json())
@@ -128,6 +127,12 @@ city_form.addEventListener('submit', function(event){
             })
     }
 })
+
+// city_form.addEventListener('submit', function(event){
+
+//     event.preventDefault();
+
+// })
 
 function displayCityInfo(city) {
     const h1 = document.querySelector('#city h1');
@@ -157,10 +162,8 @@ function createOptionsForZipcodes(json){
 
 // ============when zipcode selected and submited===============
 
-zipcode_form.addEventListener('submit', function(event){
-
-    event.preventDefault();
-
+zipcode_select.addEventListener('change', function(){
+    
     if (zipcode_select.value !== '-') {
         fetch(`http://127.0.0.1:3000/zipcodes/${zipcode_select.value}`)
             .then(resp => resp.json())
@@ -178,6 +181,11 @@ zipcode_form.addEventListener('submit', function(event){
             })
     }
 })
+// zipcode_form.addEventListener('submit', function(event){
+
+//     event.preventDefault();
+
+// })
 
 function unhideHeaders(){
     const h6 = document.querySelector('#homes-sold')
