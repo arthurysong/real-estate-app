@@ -128,7 +128,7 @@ city_select.addEventListener('change', function(){
     } else {
         makeCityInfoBlank();
         hideZipcodeDiv();
-        removeZipcodeOptions();
+        // removeZipcodeOptions();
         makeZipcodeInfoBlank();
     }
 })
@@ -140,9 +140,9 @@ function makeZipcodeInfoBlank(){
     p.innerHTML = '';
 }
 
-function removeZipcodeOptions(){
-    zipcode_select.innerHTML = `<option val='-'>-</option>`;
-}
+// function removeZipcodeOptions(){
+//     zipcode_select.innerHTML = `<option val='-'>-</option>`;
+// }
 
 function makeCityInfoBlank(){
     city_info.querySelector('h1').innerHTML = '';
@@ -173,6 +173,7 @@ function displayCityInfo(city) {
  
 // need to work on this so zipcodes don't get duplicated when I unselect and reselect city
 function createOptionsForZipcodes(json){
+    zipcode_select.innerHTML = `<option val='-'>-</option>`
     for (const zipcode of json.zipcodes){
         option = document.createElement('option');
         option.innerHTML = zipcode.digits
