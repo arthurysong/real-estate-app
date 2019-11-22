@@ -246,16 +246,20 @@ const homes_div = document.querySelector('#homes');
 const schools_button = document.querySelector('#see-schools');
 const schools_div = document.querySelector('#schools');
 
+createEventListenerForButton(homes_button, homes_div);
+createEventListenerForButton(schools_button, schools_div);
+
 function createEventListenerForButton(button, div){
     button.addEventListener('click', function(event){
         event.preventDefault();
 
         toggleDiv(div);
+        hideOtherDivs();
     })
 }
 
 function toggleDiv(div) {
-    if (div.classList.includes('hidden')) {
+    if (div.classList.contains('hidden')) {
         div.classList.remove('hidden')
     } else {
         div.classList.add('hidden');
