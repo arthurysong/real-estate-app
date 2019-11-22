@@ -107,20 +107,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 option.value = city.id;
                 city_select.appendChild(option);
             }
-            // const city = new City(json);
-            // h1.innerHTML = city.name;
-            // p.innerHTML = 
-            //     `GDP per capita: ${city.gdp_per_capita}<br>
-            //     job growth in past year: ${city.job_growth_percentage}%<br>
-            //     population: ${city.population}<br>
-            //     median price of home: ${city.median_homeprice}`
-            // select = document.querySelector('select');
-            // for (const zipcode of json.zipcodes){
-            //     option = document.createElement('option');
-            //     option.innerHTML = zipcode.digits
-            //     option.value = zipcode.id
-            //     select.appendChild(option);
-            // }
         });
 })
 
@@ -138,6 +124,7 @@ city_form.addEventListener('submit', function(event){
                 const city = new City(json);
                 displayCityInfo(city);
                 unhideZipcodeDiv();
+                createOptionsForZipcodes(json);
             })
     }
 })
@@ -157,6 +144,15 @@ function displayCityInfo(city) {
 function unhideZipcodeDiv(){
     const div = document.querySelector('#zipcode');
     div.className = "";
+}
+
+function createOptionsForZipcodes(json){
+    for (const zipcode of json.zipcodes){
+        option = document.createElement('option');
+        option.innerHTML = zipcode.digits
+        option.value = zipcode.id
+        zipcode_select.appendChild(option);
+    }
 }
 
 // ============when zipcode selected and submited===============
