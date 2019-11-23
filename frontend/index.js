@@ -122,7 +122,7 @@ city_select.addEventListener('change', function(){
                 const city = new City(json);
 
                 displayCityInfo(city);
-                resetZipcodeDiv();
+                resetZipcodeDiv(); // so when other city gets selected all elements are blank
                 showZipcodeDiv();
                 createOptionsForZipcodes(json);
             })
@@ -211,17 +211,21 @@ zipcode_select.addEventListener('change', function(){
                 
                 const zipcode = new Zipcode(json);
                 
-                displayZipcodeHeader(zipcode);
                 unhideHeaders();
-                displayZipcodeStats(zipcode);
-                displayListOfHomes(zipcode);
-                displayListOfSchools(zipcode);
                 unhideButtons();
+                displayAllZipCodeInfo(zipcode);
             })
     } else {
         resetZipcodeInfo();
     }
 })
+
+function displayAllZipCodeInfo(zipcode){
+    displayZipcodeStats(zipcode);
+    displayZipcodeHeader(zipcode);
+    displayListOfHomes(zipcode);
+    displayListOfSchools(zipcode);
+}
 
 function resetZipcodeInfo(){
     makeZipcodeInfoBlank();
