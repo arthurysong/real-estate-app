@@ -138,6 +138,14 @@ function resetZipcodeDiv(){
     makeZipcodeInfoBlank();
     hideButtons();
     hideLists();
+    resetLists();
+}
+
+function resetLists(){
+    const homes_list = document.querySelector('#homes ul');
+    const schools_list = document.querySelector('#schools ul');
+    homes_list.innerHTML = '';
+    schools_list.innerHTML = '';
 }
 
 function resetZipcodeSelect(){
@@ -145,10 +153,10 @@ function resetZipcodeSelect(){
 }
 
 function hideLists(){
-    const homes_list = document.querySelector('#homes');
-    const schools_list = document.querySelector('#schools');
-    homes_list.classList.add('hidden');
-    schools_list.classList.add('hidden');
+    const homes_div = document.querySelector('#homes');
+    const schools_div = document.querySelector('#schools');
+    homes_div.classList.add('hidden');
+    schools_div.classList.add('hidden');
 }
 
 function hideButtons(){
@@ -213,14 +221,14 @@ zipcode_select.addEventListener('change', function(){
                 
                 unhideHeaders();
                 unhideButtons();
-                displayAllZipCodeInfo(zipcode);
+                displayAllZipcodeInfo(zipcode);
             })
     } else {
         resetZipcodeInfo();
     }
 })
 
-function displayAllZipCodeInfo(zipcode){
+function displayAllZipcodeInfo(zipcode){
     displayZipcodeStats(zipcode);
     displayZipcodeHeader(zipcode);
     displayListOfHomes(zipcode);
@@ -231,6 +239,7 @@ function resetZipcodeInfo(){
     makeZipcodeInfoBlank();
     hideButtons();
     hideLists();
+    resetLists();
 }
 
 function unhideHeaders(){
