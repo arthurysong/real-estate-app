@@ -218,8 +218,16 @@ zipcode_select.addEventListener('change', function(){
                 displayListOfSchools(zipcode);
                 unhideButtons();
             })
+    } else {
+        resetZipcodeInfo();
     }
 })
+
+function resetZipcodeInfo(){
+    makeZipcodeInfoBlank();
+    hideButtons();
+    hideLists();
+}
 
 function unhideHeaders(){
     const h6 = document.querySelector('#homes-sold')
