@@ -122,25 +122,27 @@ city_select.addEventListener('change', function(){
                 const city = new City(json);
 
                 displayCityInfo(city);
-                // resetZipcodeDiv();
-                makeZipcodeInfoBlank();
-                hideButtons();
-                hideLists();
-
+                resetZipcodeDiv();
                 showZipcodeDiv();
-
-                
                 createOptionsForZipcodes(json);
             })
     } else {
         makeCityInfoBlank();
-        // resetZipcodeDiv();
-        makeZipcodeInfoBlank();
         hideZipcodeDiv();
-        hideButtons();
-        hideLists();
+        resetZipcodeDiv();
     }
 })
+
+function resetZipcodeDiv(){
+    resetZipcodeSelect();
+    makeZipcodeInfoBlank();
+    hideButtons();
+    hideLists();
+}
+
+function resetZipcodeSelect(){
+    zipcode_select.innerHTML = `<option val='-'>-</option>`
+}
 
 function hideLists(){
     const homes_list = document.querySelector('#homes');
@@ -187,10 +189,8 @@ function displayCityInfo(city) {
         population: ${city.population}<br>
         median price of home: ${city.median_homeprice}`
 }
- 
-// need to work on this so zipcodes don't get duplicated when I unselect and reselect city
+
 function createOptionsForZipcodes(json){
-    zipcode_select.innerHTML = `<option val='-'>-</option>`
     for (const zipcode of json.zipcodes){
         option = document.createElement('option');
         option.innerHTML = zipcode.digits
