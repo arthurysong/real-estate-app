@@ -341,3 +341,23 @@ function hideOtherDivs(current_showing_div) {
         }
     }
 }
+
+
+
+
+//==================add home link =======================================
+
+const add_home = document.querySelector('#add-home');
+add_home.addEventListener('click', function(event){
+    event.preventDefault();
+
+    
+})
+
+
+
+
+
+
+
+
