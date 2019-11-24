@@ -130,6 +130,7 @@ city_select.addEventListener('change', function(){
             })
     } else {
         makeCityInfoBlank();
+        hideZipcodeDiv();
         resetZipcodeDiv();
     }
 })
@@ -174,11 +175,11 @@ function makeZipcodeInfoBlank(){
 
 function makeCityInfoBlank(){
     city_info.querySelector('h1').innerHTML = '';
-    city_info.querySelector('p').innerHTML = '';
 }
 
 function showZipcodeDiv(){
     const div = document.querySelector('#zipcode');
+    city_info.querySelector('p').innerHTML = '';
     div.classList.remove('hidden');
 }
 
