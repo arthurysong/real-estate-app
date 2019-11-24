@@ -220,7 +220,7 @@ zipcode_select.addEventListener('change', function(){
                 console.log(json);
                 
                 const zipcode = new Zipcode(json);
-                
+                resetZipcodeInfo();
                 unhideHeaders();
                 unhideButtons();
                 displayAllZipcodeInfo(zipcode);
