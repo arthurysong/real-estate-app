@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_182219) do
 
   create_table "homes", force: :cascade do |t|
     t.integer "zipcode_id"
+    t.date "date_sold"
     t.integer "price"
     t.string "address"
     t.integer "bedrooms"
