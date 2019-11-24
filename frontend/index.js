@@ -68,6 +68,7 @@ class Home {
         this.price = json.price;
         this.sqft = json.sqft;
         this.year_built = json.year_built;
+        this.date_sold = json.date_sold;
     }
 }
 
@@ -123,12 +124,12 @@ city_select.addEventListener('change', function(){
 
                 displayCityInfo(city);
                 resetZipcodeDiv(); // so when other city gets selected all elements are blank
+                hideZipcodeDiv();
                 showZipcodeDiv();
                 createOptionsForZipcodes(json);
             })
     } else {
         makeCityInfoBlank();
-        hideZipcodeDiv();
         resetZipcodeDiv();
     }
 })
@@ -275,6 +276,7 @@ function displayListOfHomes(zipcode){
         const li = document.createElement('li');
         li.innerHTML = 
             `
+            Sold on ${home.date_sold}<br>
             $${home.price}<br>
             ${home.address}<br>
             ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
