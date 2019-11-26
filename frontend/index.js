@@ -383,10 +383,9 @@ add_home.addEventListener('click', function(event){
             body: JSON.stringify(home_json)
         }
 
-        fetch('http://127.0.0.1:3000/homes/create', configObject) 
+        fetch('http://127.0.0.1:3000/homes', configObject) 
             .then(resp=> resp.json())
             .then(json=> console.log(json))
-        }
         
         // this.address = json.address;
         // this.bathrooms = json.bathrooms;

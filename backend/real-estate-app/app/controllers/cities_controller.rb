@@ -8,4 +8,8 @@ class CitiesController < ApplicationController
         cities = City.all
         render json: cities
     end
+
+    def create
+        puts params
+    end
 end
