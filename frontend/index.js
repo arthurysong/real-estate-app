@@ -351,7 +351,27 @@ const add_home = document.querySelector('#add-home');
 add_home.addEventListener('click', function(event){
     event.preventDefault();
 
-    
+    const new_home_div = document.querySelector('#new-home-div')
+    new_home_div.classList.remove('hidden');
+
+    const new_home_submit = document.querySelector('#new-home-submit')
+    new_home_submit.addEventListener('click', function(event){
+        event.preventDefault();
+        const form = new_home_div.querySelector('form')
+        
+        const home_json = {
+            address: form.querySelector('')
+        }
+        
+        
+        // this.address = json.address;
+        // this.bathrooms = json.bathrooms;
+        // this.bedrooms = json.bedrooms;
+        // this.price = json.price;
+        // this.sqft = json.sqft;
+        // this.year_built = json.year_built;
+        // this.date_sold = json.date_sold;
+    })
 })
 
 

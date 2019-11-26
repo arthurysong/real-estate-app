@@ -7,6 +7,7 @@
     <body>
         <div id="city">
             <h4 id="pick-a-city">Choose a City</h4>
+            
             <select id="city-select">
                 <option val='-'>-</option>
             </select>
@@ -30,16 +31,26 @@
 
             <div id="possible-lists">
                 <div id="homes" class="hidden">
-                    <form id="new-home-form" class="hidden">
-                        <input type="text" id="address">
-                        <input type="text" id="date-sold">
-                        <input type="text" id="price">
-                        <input type="text" id="bedrooms">
-                        <input type="text" id="bathrooms">
-                        <input type="text" id="sqft">
-                        <input type="text" id="year-built">
-                        <input type="submit">
-                    </form>
+                    <div id="new-home-div" class="hidden">
+                        <h6>Add new home</h6>
+                        <form>
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="address"><br>
+                            <label for="date-sold">Date Sold:</label>
+                            <input type="text" id="date-sold" name="date-sold"><br>
+                            <label for="price">Price:</label>
+                            <input type="text" id="price" name="price"><br>
+                            <label for="bedrooms">No. of Bedrooms:</label>
+                            <input type="text" id="bedrooms" name="bedrooms"><br>
+                            <label for="bathrooms">No. of Bathrooms:</label>
+                            <input type="text" id="bathrooms" name="bathrooms"><br>
+                            <label for="sqft">Sq ft:</label>
+                            <input type="text" id="sqft" name="sqft"><br>
+                            <label for="year-built">Year Built:</label>
+                            <input type="text" id="year-built" name="year-built"><br>
+                            <input type="submit" id="new-home-submit">
+                        </form>
+                    </div>
                     <h6 id="homes-sold">Homes Sold <a id="add-home" href=''>Add Home</a></h6>
                     <ul></ul>
                 </div>
