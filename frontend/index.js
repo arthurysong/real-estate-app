@@ -348,57 +348,54 @@ function hideOtherDivs(current_showing_div) {
 //==================add home link =======================================
 
 const add_home = document.querySelector('#add-home');
+const new_home_div = document.querySelector('#new-home-div')
 add_home.addEventListener('click', function(event){
     event.preventDefault();
-
-    const new_home_div = document.querySelector('#new-home-div')
     new_home_div.classList.remove('hidden');
-
-    const new_home_submit = document.querySelector('#new-home-submit')
-    new_home_submit.addEventListener('click', function(event){
-        event.preventDefault();
-        const form = new_home_div.querySelector('form')
-        
-        const home_json = {
-            zipcode_id: document.querySelector('#zipcode-select').value,
-            address: form.querySelector('#address').value,
-            bathrooms: form.querySelector('#bathrooms').value,
-            bedrooms: form.querySelector('#price').value,
-            price: form.querySelector('#price').value,
-            sqft: form.querySelector('#sqft').value,
-            year_built: form.querySelector('#year-built').value,
-            date_sold: form.querySelector('#date-sold').value
-        }
-
-        // const home = new Home (home_json)
-
-        // i need to send data w fetch
-
-        configObject = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(home_json)
-        }
-
-        fetch('http://127.0.0.1:3000/homes', configObject) 
-            .then(resp => resp.json())
-            .then(json => console.log(json))
-        
-        // this.address = json.address;
-        // this.bathrooms = json.bathrooms;
-        // this.bedrooms = json.bedrooms;
-        // this.price = json.price;
-        // this.sqft = json.sqft;
-        // this.year_built = json.year_built;
-        // this.date_sold = json.date_sold;
-    })
 })
 
+const new_home_submit = document.querySelector('#new-home-submit')
+new_home_submit.addEventListener('click', function(event){
+    event.preventDefault();
+    const form = new_home_div.querySelector('form')
+    
+    const home_json = {
+        zipcode_id: document.querySelector('#zipcode-select').value,
+        address: form.querySelector('#address').value,
+        bathrooms: form.querySelector('#bathrooms').value,
+        bedrooms: form.querySelector('#price').value,
+        price: form.querySelector('#price').value,
+        sqft: form.querySelector('#sqft').value,
+        year_built: form.querySelector('#year-built').value,
+        date_sold: form.querySelector('#date-sold').value
+    }
 
+    configObject = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(home_json)
+    }
 
+    fetch('http://127.0.0.1:3000/homes', configObject) 
+        .then(resp => resp.json())
+        .then(json => console.log(json))
+
+    // need to refresh zipcode info .... currently working on
+    resetZipcodeInfo();
+    unhideHeaders();
+    unhideButtons();
+    displayAllZipcodeInfo(zipcode);
+})
+
+// add listener for the hide button
+const hide = document.querySelector('#hide-new-home-form')
+hide.addEventListener('click', function(event){
+    event.preventDefault();
+    new_home_div.classList.add('hidden');
+})
 
 
 
