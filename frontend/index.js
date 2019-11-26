@@ -360,9 +360,33 @@ add_home.addEventListener('click', function(event){
         const form = new_home_div.querySelector('form')
         
         const home_json = {
-            address: form.querySelector('')
+            zipcode_id: document.querySelector('#zipcode-select').value,
+            address: form.querySelector('#address').value,
+            bathrooms: form.querySelector('#bathrooms').value,
+            bedrooms: form.querySelector('#price').value,
+            price: form.querySelector('#price').value,
+            sqft: form.querySelector('#sqft').value,
+            year_built: form.querySelector('#year-built').value,
+            date_sold: form.querySelector('#date-sold').value
         }
-        
+
+        // const home = new Home (home_json)
+
+        // i need to send data w fetch
+
+        configObject = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(home_json)
+        }
+
+        fetch('http://127.0.0.1:3000/homes/create', configObject) 
+            .then(resp=> resp.json())
+            .then(json=> console.log(json))
+        }
         
         // this.address = json.address;
         // this.bathrooms = json.bathrooms;
