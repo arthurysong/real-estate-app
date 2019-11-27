@@ -221,8 +221,7 @@ zipcode_select.addEventListener('change', function(){
                 
                 curr_zipcode = new Zipcode(json);
                 resetZipcodeInfo();
-                unhideHeaders();
-                unhideButtons();
+                
                 displayAllZipcodeInfo(curr_zipcode);
             })
     } else {
@@ -231,6 +230,8 @@ zipcode_select.addEventListener('change', function(){
 })
 
 function displayAllZipcodeInfo(zipcode){
+    unhideHeaders();
+    unhideButtons();
     displayZipcodeStats(zipcode);
     displayZipcodeHeader(zipcode);
     displayListOfHomes(zipcode);
@@ -385,8 +386,6 @@ new_home_submit.addEventListener('click', function(event){
 
     // need to refresh zipcode info .... currently working on
     resetZipcodeInfo();
-    unhideHeaders();
-    unhideButtons();
     displayAllZipcodeInfo(curr_zipcode);
 })
 
