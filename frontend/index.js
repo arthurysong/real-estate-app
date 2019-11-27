@@ -122,20 +122,23 @@ city_select.addEventListener('change', function(){
 
                 const city = new City(json);
 
-                displayCityInfo(city);
-                resetZipcodeDiv(); // so when other city gets selected all elements are blank
-                hideZipcodeDiv();
+                resetZipcodeDiv();
+
                 showZipcodeDiv();
+                displayCityInfo(city);
+                 // so when other city gets selected all elements are blank
+                // hideZipcodeDiv();
+                
                 createOptionsForZipcodes(json);
             })
     } else {
         makeCityInfoBlank();
-        hideZipcodeDiv();
         resetZipcodeDiv();
     }
 })
 
 function resetZipcodeDiv(){
+    hideZipcodeDiv();
     resetZipcodeSelect();
     makeZipcodeInfoBlank();
     hideButtons();
@@ -175,11 +178,11 @@ function makeZipcodeInfoBlank(){
 
 function makeCityInfoBlank(){
     city_info.querySelector('h1').innerHTML = '';
+    city_info.querySelector('p').innerHTML = '';    
 }
 
 function showZipcodeDiv(){
     const div = document.querySelector('#zipcode');
-    city_info.querySelector('p').innerHTML = '';
     div.classList.remove('hidden');
 }
 
