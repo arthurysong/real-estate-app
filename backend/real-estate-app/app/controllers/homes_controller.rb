@@ -16,6 +16,6 @@ class HomesController < ApplicationController
             bathrooms: params[:bathrooms], 
             sqft: params[:sqft], 
             year_built: params[:year_built] )
-        render json: home
+        render json: zipcode, include: [:schools, :homes]
     end
 end

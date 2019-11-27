@@ -382,13 +382,24 @@ new_home_submit.addEventListener('click', function(event){
 
     fetch('http://127.0.0.1:3000/homes', configObject) 
         .then(resp => resp.json())
-        .then(json => console.log(json))
+        .then(json => {
+            console.log(json);
 
-    // need to refresh zipcode info .... currently working on
-    resetZipcodeInfo();
-    displayAllZipcodeInfo(curr_zipcode);
+            curr_zipcode = new Zipcode (json);
+            
+            displayAllZipcodeInfo(curr_zipcode);  
+            //refresh form
+            refreshForm();  
+        })
 })
 
+function refreshForm(){
+    const new_home_inputs = document.querySelectorAll('#new-home-div input');
+    for (const input of new_home_inputs){
+        if (input.type === 'text') input.value = '';
+        
+    }
+}
 // add listener for the hide button
 const hide = document.querySelector('#hide-new-home-form')
 hide.addEventListener('click', function(event){
