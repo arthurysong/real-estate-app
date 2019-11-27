@@ -210,7 +210,7 @@ function createOptionsForZipcodes(json){
 }
 
 // ============when zipcode selected and submited===============
-
+let curr_zipcode;
 zipcode_select.addEventListener('change', function(){
     
     if (zipcode_select.value !== '-') {
@@ -219,11 +219,11 @@ zipcode_select.addEventListener('change', function(){
             .then(json => {
                 console.log(json);
                 
-                const zipcode = new Zipcode(json);
+                curr_zipcode = new Zipcode(json);
                 resetZipcodeInfo();
                 unhideHeaders();
                 unhideButtons();
-                displayAllZipcodeInfo(zipcode);
+                displayAllZipcodeInfo(curr_zipcode);
             })
     } else {
         resetZipcodeInfo();
@@ -387,7 +387,7 @@ new_home_submit.addEventListener('click', function(event){
     resetZipcodeInfo();
     unhideHeaders();
     unhideButtons();
-    displayAllZipcodeInfo(zipcode);
+    displayAllZipcodeInfo(curr_zipcode);
 })
 
 // add listener for the hide button
