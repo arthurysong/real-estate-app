@@ -1,3 +1,14 @@
 .hidden {
     display: none;
 }
+
+body {
+    background-image: url('background1.jpg');
+    /* background-color: #cccccc; */
+    color: white;
+    font-family: arial, sans-serif;
+   }
+
+/* h4 {
+    font-size: 40px;
+} */
