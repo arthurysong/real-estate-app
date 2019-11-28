@@ -128,7 +128,7 @@ city_select.addEventListener('change', function(){
                 displayCityInfo(city);
                  // so when other city gets selected all elements are blank
                 // hideZipcodeDiv();
-                
+                //blah blah test test
                 createOptionsForZipcodes(json);
             })
     } else {
