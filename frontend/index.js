@@ -446,14 +446,14 @@ new_city_submit.addEventListener('click', function(event){
     // income_growth: 8.13,
     // job_growth_percentage: 0.849)
     const city_json = {
-        name: document.querySelector('#name').value,
-        median_homeprice: document.querySelector('#median-homeprice').value,
-        home_value_growth: document.querySelector('#home-value-growth').value,
-        population: document.querySelector('#population').value,
-        median_age: document.querySelector('#median-age').value,
-        median_household_income: document.querySelector('#median-household-income'),
-        income_growth: document.querySelector('#income-growth').value,
-        job_growth_percentage: document.querySelector('#job-growth-percentage')
+        name: form.querySelector('#name').value,
+        median_homeprice: form.querySelector('#median-homeprice').value,
+        home_value_growth: form.querySelector('#home-value-growth').value,
+        population: form.querySelector('#population').value,
+        median_age: form.querySelector('#median-age').value,
+        median_household_income: form.querySelector('#median-household-income'),
+        income_growth: form.querySelector('#income-growth').value,
+        job_growth_percentage: form.querySelector('#job-growth-percentage')
     }
 
     configObject = {

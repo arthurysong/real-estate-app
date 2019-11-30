@@ -14,7 +14,6 @@ body {
     font-family: arial, sans-serif;
     text-shadow: 2px 2px 4px black;
 
-    /* text-align: center; */
    }
 
 a {
@@ -30,11 +29,3 @@ a {
 ul {
     list-style-type: none;
 }
-
-/* #schools ul {
-    list-style-type: none;
-} */
-
-/* h4 {
-    font-size: 40px;
-} */
