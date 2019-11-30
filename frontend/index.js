@@ -200,9 +200,10 @@ function showZipcodeDiv(){
 }
 
 function hideZipcodeDiv(){
-}
     const div = document.querySelector('#zipcode');
     div.classList.add('hidden');
+}
+
 function displayCityInfo(city) {
     city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
@@ -297,9 +298,6 @@ function displayZipcodeStats(zipcode){
 }
 
 function displayListOfHomes(zipcode){
-    // const homes_div = document.querySelector('#homes')
-    // homes_div.className = '';
-
     const homes_list = document.querySelector('#homes ul')
     homes_list.innerHTML = "";
     for (const home of zipcode.homes) {
