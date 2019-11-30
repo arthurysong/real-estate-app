@@ -418,11 +418,12 @@ function refreshForm(form){
     }
 }
 
-const hide = document.querySelector('#hide-new-home-form')
-hide.addEventListener('click', function(event){
-    event.preventDefault();
-    new_home_div.classList.add('hidden');
-})
+const hide_new_home_form = document.querySelector('#hide-new-home-form')
+// hide.addEventListener('click', function(event){
+//     event.preventDefault();
+//     new_home_div.classList.add('hidden');
+// })
+addListenerForHideLink(hide_new_home_form, new_home_div);
 
 // ============================ add city listener ===========================================
 
@@ -466,6 +467,26 @@ new_city_submit.addEventListener('click', function(event){
             console.log(json);
 
             refreshForm(new_city_form);
-            addNewCityToSelection();
+            updateCityOptions();
         })
 })
+
+function updateCityOptions(){
+    city_select.innerHTML = `<option val='-'>-</option>`;
+    fetch('http://127.0.0.1:3000/cities')
+        .then(resp => resp.json())
+        .then(json => {
+            createOptionsForCities(json);
+        });
+}
+
+const hide_new_city_form = document.querySelector('#hide-new-city-form');
+addListenerForHideLink(hide_new_city_form, new_city_div);
+
+function addListenerForHideLink(hide_link, div){
+    hide_link.addEventListener('click', function(event){
+        event.preventDefault();
+        div.classList.add('hidden');
+    })
+}
+
