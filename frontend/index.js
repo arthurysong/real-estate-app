@@ -205,14 +205,7 @@ function displayCityInfo(city) {
     city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
     const p = document.querySelector('#city p');
-    // name: "Tucson",
-    // median_homeprice: 182300,
-    // home_value_growth: 7.05,
-    // population: 1020000,
-    // median_age: 38.5,
-    // median_household_income: 51425,
-    // income_growth: 8.13,
-    // job_growth_percentage: 0.849)
+    
     h1.innerHTML = city.name;
     p.innerHTML = 
         `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
@@ -435,11 +428,33 @@ hide.addEventListener('click', function(event){
 
 const add_city = document.querySelector('#add-city');
 const new_city_div = document.querySelector('#new-city-div');
-const new_city_submit = document.querySelector('#new-home-submit');
 add_city.addEventListener('click', function(event){
     event.preventDefault();
-
+    new_city_div.classList.remove('hidden');
 })
 
+const new_city_submit = document.querySelector('#new-home-submit');
+new_city_submit.addEventListener('click', function(event){
+    event.preventDefault();
+    const form = new_city_div.querySelector('form');
+    // name: "Tucson",
+    // median_homeprice: 182300,
+    // home_value_growth: 7.05,
+    // population: 1020000,
+    // median_age: 38.5,
+    // median_household_income: 51425,
+    // income_growth: 8.13,
+    // job_growth_percentage: 0.849)
+    const city_json = {
+        name: document.querySelector('#name').value,
+        median_homeprice: document.querySelector('#median-homeprice').value,
+        home_value_growth: document.querySelector('#home-value-growth').value,
+        population: document.querySelector('#population').value,
+        median_age: document.querySelector('#median-age').value,
+        median_household_income: document.querySelector('#median-household-income'),
+        income_growth: document.querySelector('#income-growth').value,
+        job_growth_percentage: document.querySelector()
 
+    }
+})
 
