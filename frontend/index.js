@@ -451,9 +451,9 @@ new_city_submit.addEventListener('click', function(event){
         home_value_growth: form.querySelector('#home-value-growth').value,
         population: form.querySelector('#population').value,
         median_age: form.querySelector('#median-age').value,
-        median_household_income: form.querySelector('#median-household-income'),
+        median_household_income: form.querySelector('#median-household-income').value,
         income_growth: form.querySelector('#income-growth').value,
-        job_growth_percentage: form.querySelector('#job-growth-percentage')
+        job_growth_percentage: form.querySelector('#job-growth-percentage').value
     }
 
     configObject = {
