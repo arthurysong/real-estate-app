@@ -453,8 +453,22 @@ new_city_submit.addEventListener('click', function(event){
         median_age: document.querySelector('#median-age').value,
         median_household_income: document.querySelector('#median-household-income'),
         income_growth: document.querySelector('#income-growth').value,
-        job_growth_percentage: document.querySelector()
-
+        job_growth_percentage: document.querySelector('#job-growth-percentage')
     }
+
+    configObject = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(city_json)
+    }
+
+    fetch('http://127.0.0.1:3000/cities', configObject)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json);
+        })
 })
 
