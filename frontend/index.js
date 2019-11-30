@@ -2,11 +2,24 @@
 
 class City {
     constructor (json) {
+        
+    // name: "Tucson",
+    // median_homeprice: 182300,
+    // home_value_growth: 7.05,
+    // population: 1020000,
+    // median_age: 38.5,
+    // median_household_income: 51425,
+    // income_growth: 8.13,
+    // job_growth_percentage: 0.849)
         this.name = json.name;
-        this.gdp_per_capita = json.gdp_per_capita;
+        this.median_household_income = json.median_household_income;
+        this.income_growth = json.income_growth;
         this.job_growth_percentage = json.job_growth_percentage;
         this.population = json.population;
+        this.median_age = json.median_age;
         this.median_homeprice = json.median_homeprice;
+        this.home_value_growth = json.home_value_growth;
+
     }
 }
 
@@ -194,20 +207,32 @@ function displayCityInfo(city) {
     city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
     const p = document.querySelector('#city p');
-
+    // name: "Tucson",
+    // median_homeprice: 182300,
+    // home_value_growth: 7.05,
+    // population: 1020000,
+    // median_age: 38.5,
+    // median_household_income: 51425,
+    // income_growth: 8.13,
+    // job_growth_percentage: 0.849)
     h1.innerHTML = city.name;
     p.innerHTML = 
-        `GDP per capita: ${city.gdp_per_capita}<br>
-        job growth in past year: ${city.job_growth_percentage}%<br>
-        population: ${city.population}<br>
-        median price of home: ${city.median_homeprice}`
+        `Median Household Income: ${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
+        Job Growth: ${city.job_growth_percentage}%<br>
+        Population: ${numberWithCommas(city.population)}<br>
+        Median Age: ${city.median_age}<br>
+        Median Property Value: ${numberWithCommas(city.median_homeprice)} (${city.home_value_growth}% Growth)`
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function createOptionsForZipcodes(json){
     for (const zipcode of json.zipcodes){
         option = document.createElement('option');
         option.innerHTML = zipcode.digits
-        option.value = zipcode.id
+        option.value = zipcode.id1
         zipcode_select.appendChild(option);
     }
 }
