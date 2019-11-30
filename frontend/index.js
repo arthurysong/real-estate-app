@@ -200,9 +200,9 @@ function showZipcodeDiv(){
 }
 
 function hideZipcodeDiv(){
+}
     const div = document.querySelector('#zipcode');
     div.classList.add('hidden');
-}
 function displayCityInfo(city) {
     city_info.classList.remove('hidden');    
     const h1 = document.querySelector('#city h1');
@@ -217,11 +217,11 @@ function displayCityInfo(city) {
     // job_growth_percentage: 0.849)
     h1.innerHTML = city.name;
     p.innerHTML = 
-        `Median Household Income: ${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
+        `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
         Job Growth: ${city.job_growth_percentage}%<br>
         Population: ${numberWithCommas(city.population)}<br>
         Median Age: ${city.median_age}<br>
-        Median Property Value: ${numberWithCommas(city.median_homeprice)} (${city.home_value_growth}% Growth)`
+        Median Property Value: $${numberWithCommas(city.median_homeprice)} (${city.home_value_growth}% Growth)`
 }
 
 function numberWithCommas(x) {
@@ -307,10 +307,10 @@ function displayListOfHomes(zipcode){
         li.innerHTML = 
             `
             Sold on ${home.date_sold}<br>
-            $${home.price}<br>
+            $${numberWithCommas(home.price)}<br>
             ${home.address}<br>
-            ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
-            year built: ${home.year_built}<br><br>
+            ${home.bedrooms} bds | ${home.bathrooms} ba | ${numberWithCommas(home.sqft)} sqft<br>
+            Year Built: ${home.year_built}<br><br>
             `;
         homes_list.appendChild(li);
     } 
@@ -324,7 +324,7 @@ function displayListOfSchools(zipcode){
     schools_list.innerHTML = "";
     for (const school of zipcode.schools){
         const li = document.createElement('li');
-        li.innerHTML = `${school.name}, rated ${school.rating}/10`;
+        li.innerHTML = `${school.name}, rated ${school.rating}/10<br><br>`;
         schools_list.appendChild(li);
     }
 }
