@@ -3,12 +3,23 @@
 }
 
 body {
-    background-image: url('background1.jpg');
+    background-image: url('background2.jpg');
     /* background-color: #cccccc; */
     color: white;
     font-family: arial, sans-serif;
     text-shadow: 1px 1px 2px black;
+
+    /* text-align: center; */
    }
+
+
+ul {
+    list-style-type: none;
+}
+
+/* #schools ul {
+    list-style-type: none;
+} */
 
 /* h4 {
     font-size: 40px;
