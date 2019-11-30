@@ -488,3 +488,32 @@ const new_zipcode_div = document.querySelector('#new-zipcode-div');
 const hide_new_zipcode_form = document.querySelector('#hide-new-zipcode-form');
 const new_zipcode_submit = document.querySelector('#new-zipcode-submit');
 const new_zipcode_form = new_zipcode_div.querySelector('form');
+
+addListenerForAddLink(add_zipcode, new_zipcode_div);
+addListenerForHideLink(hide_new_zipcode_form, new_zipcode_div);
+
+new_zipcode_submit.addEventListener('click', function(event){
+    event.preventDefault();
+
+    const zipcode_json = {
+        city_id: document.querySelector('#city-select').value,
+        digits: new_zipcode_form.querySelector('#digits')
+    }
+
+    configObject = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(zipcode_json)
+    }
+
+    fetch('http://127.0.0.1:3000/zipcodes', configObject) 
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json);
+            
+
+        })
+})
