@@ -3,22 +3,28 @@
 }
 
 body {
-    height: 1000px;
+    height: 500px;
     background-image: url('background2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #26301d;
+
+
     color: white;
     font-family: arial, sans-serif;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 2px 2px 4px black;
 
     /* text-align: center; */
    }
 
+a {
+    color: #ffcccc;
+}
+
 #container {
     width: 300px;
 
-    margin: 25px auto;
+    margin: 100px auto;
 }
 
 ul {

@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_182219) do
+ActiveRecord::Schema.define(version: 2019_11_30_162452) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "median_homeprice"
     t.integer "population"
-    t.integer "gdp_per_capita"
+    t.integer "median_household_income"
     t.float "job_growth_percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "median_age"
+    t.float "home_value_growth"
+    t.float "income_growth"
   end
 
   create_table "homes", force: :cascade do |t|
