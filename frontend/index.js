@@ -521,11 +521,11 @@ new_zipcode_submit.addEventListener('click', function(event){
 
 function updateZipcodeOptions(){
     zipcode_select.innerHTML = `<option val='-'>-</option>`;
-    fetch('http://127.0.0.1:3000/zipcodes')
+    fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
         .then(resp => resp.json())
         .then(json => {
             console.log(json);
-            
-            createOptionsForZipcodes(json);
+
+            createOptionsForZipcodes(json.zipcodes);
         });
 }
