@@ -483,3 +483,8 @@ function refreshForm(form){
 
 //======================= adding a zipcode ================================
 
+const add_zipcode = document.querySelector('#add-zipcode');
+const new_zipcode_div = document.querySelector('#new-zipcode-div');
+const hide_new_zipcode_form = document.querySelector('#hide-new-zipcode-form');
+const new_zipcode_submit = document.querySelector('#new-zipcode-submit');
+const new_zipcode_form = new_zipcode_div.querySelector('form');
