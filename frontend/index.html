@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- <style>
-            body {
-                background-image: url('scenic_mountain.jpg')
-            }
-        </style> -->
         <title>Discover a City</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -56,6 +51,15 @@
                 <select id="zipcode-select">
                     <option val="-">-</option>
                 </select>
+                <a id="add-zipcode" href=''>Add Zipcode</a>
+                <div id="new-zipcode-div" class="hidden">
+                    <h6>Add new home <a href='' id="hide-new-zipcode-form">hide</a></h6>
+                    <form>
+                        <label for="digits">Zipcode:</label><br>
+                        <input type="text" id="digits" name="digits"><br>
+                        <input type="submit" id="new-zipcode-submit">
+                    </form>
+                </div>
                 <h3 id="zipcode-header"></h3>
                 <p id="zipcode-info"></p>
 
