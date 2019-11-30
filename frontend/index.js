@@ -285,7 +285,7 @@ function displayListOfHomes(zipcode){
             $${home.price}<br>
             ${home.address}<br>
             ${home.bedrooms} bds | ${home.bathrooms} ba | ${home.sqft} sqft<br>
-            year built: ${home.year_built}
+            year built: ${home.year_built}<br><br>
             `;
         homes_list.appendChild(li);
     } 
