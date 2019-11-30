@@ -372,19 +372,20 @@ add_home.addEventListener('click', function(event){
 })
 
 const new_home_submit = document.querySelector('#new-home-submit')
+const new_home_form = new_home_div.querySelector('form')
+
 new_home_submit.addEventListener('click', function(event){
     event.preventDefault();
-    const form = new_home_div.querySelector('form')
     
     const home_json = {
         zipcode_id: document.querySelector('#zipcode-select').value,
-        address: form.querySelector('#address').value,
-        bathrooms: form.querySelector('#bathrooms').value,
-        bedrooms: form.querySelector('#price').value,
-        price: form.querySelector('#price').value,
-        sqft: form.querySelector('#sqft').value,
-        year_built: form.querySelector('#year-built').value,
-        date_sold: form.querySelector('#date-sold').value
+        address: new_home_form.querySelector('#address').value,
+        bathrooms: new_home_form.querySelector('#bathrooms').value,
+        bedrooms: new_home_form.querySelector('#price').value,
+        price: new_home_form.querySelector('#price').value,
+        sqft: new_home_form.querySelector('#sqft').value,
+        year_built: new_home_form.querySelector('#year-built').value,
+        date_sold: new_home_form.querySelector('#date-sold').value
     }
 
     configObject = {
@@ -405,13 +406,13 @@ new_home_submit.addEventListener('click', function(event){
             
             displayAllZipcodeInfo(curr_zipcode);  
             //refresh form
-            refreshForm();  
+            refreshForm(new_home_form);  
         })
 })
 
-function refreshForm(){
-    const new_home_inputs = document.querySelectorAll('#new-home-div input');
-    for (const input of new_home_inputs){
+function refreshForm(form){
+    const inputs = form.querySelectorAll('input');
+    for (const input of inputs){
         if (input.type === 'text') input.value = '';
         
     }
@@ -434,26 +435,20 @@ add_city.addEventListener('click', function(event){
 })
 
 const new_city_submit = document.querySelector('#new-city-submit');
+const new_city_form = new_city_div.querySelector('form');
+
 new_city_submit.addEventListener('click', function(event){
     event.preventDefault();
-    const form = new_city_div.querySelector('form');
-    // name: "Tucson",
-    // median_homeprice: 182300,
-    // home_value_growth: 7.05,
-    // population: 1020000,
-    // median_age: 38.5,
-    // median_household_income: 51425,
-    // income_growth: 8.13,
-    // job_growth_percentage: 0.849)
+
     const city_json = {
-        name: form.querySelector('#name').value,
-        median_homeprice: form.querySelector('#median-homeprice').value,
-        home_value_growth: form.querySelector('#home-value-growth').value,
-        population: form.querySelector('#population').value,
-        median_age: form.querySelector('#median-age').value,
-        median_household_income: form.querySelector('#median-household-income').value,
-        income_growth: form.querySelector('#income-growth').value,
-        job_growth_percentage: form.querySelector('#job-growth-percentage').value
+        name: new_city_form.querySelector('#name').value,
+        median_homeprice: new_city_form.querySelector('#median-homeprice').value,
+        home_value_growth: new_city_form.querySelector('#home-value-growth').value,
+        population: new_city_form.querySelector('#population').value,
+        median_age: new_city_form.querySelector('#median-age').value,
+        median_household_income: new_city_form.querySelector('#median-household-income').value,
+        income_growth: new_city_form.querySelector('#income-growth').value,
+        job_growth_percentage: new_city_form.querySelector('#job-growth-percentage').value
     }
 
     configObject = {
@@ -469,6 +464,8 @@ new_city_submit.addEventListener('click', function(event){
         .then(resp => resp.json())
         .then(json => {
             console.log(json);
+
+            refreshForm(new_city_form);
+            addNewCityToSelection();
         })
 })
-
