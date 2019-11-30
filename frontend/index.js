@@ -439,7 +439,6 @@ const new_city_submit = document.querySelector('#new-home-submit');
 add_city.addEventListener('click', function(event){
     event.preventDefault();
 
-
 })
 
 
