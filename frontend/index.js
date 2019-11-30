@@ -141,7 +141,7 @@ city_select.addEventListener('change', function(){
                 resetZipcodeDiv();
                 showZipcodeDiv();
                 displayCityInfo(city);
-                createOptionsForZipcodes(json);
+                createOptionsForZipcodes(json.zipcodes);
             })
     } else {
         makeCityInfoBlank();
@@ -221,8 +221,8 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function createOptionsForZipcodes(json){
-    for (const zipcode of json.zipcodes){
+function createOptionsForZipcodes(zipcodes){
+    for (const zipcode of zipcodes){
         option = document.createElement('option');
         option.innerHTML = zipcode.digits
         option.value = zipcode.id
@@ -497,7 +497,7 @@ new_zipcode_submit.addEventListener('click', function(event){
 
     const zipcode_json = {
         city_id: document.querySelector('#city-select').value,
-        digits: new_zipcode_form.querySelector('#digits')
+        digits: new_zipcode_form.querySelector('#digits').value
     }
 
     configObject = {
@@ -514,6 +514,18 @@ new_zipcode_submit.addEventListener('click', function(event){
         .then(json => {
             console.log(json);
             
-
+            refreshForm(new_zipcode_form);
+            updateZipcodeOptions();
         })
 })
+
+function updateZipcodeOptions(){
+    zipcode_select.innerHTML = `<option val='-'>-</option>`;
+    fetch('http://127.0.0.1:3000/zipcodes')
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json);
+            
+            createOptionsForZipcodes(json);
+        });
+}
