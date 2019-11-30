@@ -366,10 +366,12 @@ function hideOtherDivs(current_showing_div) {
 
 const add_home = document.querySelector('#add-home');
 const new_home_div = document.querySelector('#new-home-div')
-addListenerForAddLink(add_home, new_home_div);
-
 const new_home_submit = document.querySelector('#new-home-submit')
 const new_home_form = new_home_div.querySelector('form')
+const hide_new_home_form = document.querySelector('#hide-new-home-form')
+
+addListenerForHideLink(hide_new_home_form, new_home_div);
+addListenerForAddLink(add_home, new_home_div);
 
 new_home_submit.addEventListener('click', function(event){
     event.preventDefault();
@@ -406,18 +408,17 @@ new_home_submit.addEventListener('click', function(event){
         })
 })
 
-const hide_new_home_form = document.querySelector('#hide-new-home-form')
-addListenerForHideLink(hide_new_home_form, new_home_div);
-
 // ============================ add city listener ===========================================
 
 
 const add_city = document.querySelector('#add-city');
 const new_city_div = document.querySelector('#new-city-div');
-addListenerForAddLink(add_city, new_city_div);
-
+const hide_new_city_form = document.querySelector('#hide-new-city-form');
 const new_city_submit = document.querySelector('#new-city-submit');
 const new_city_form = new_city_div.querySelector('form');
+
+addListenerForAddLink(add_city, new_city_div);
+addListenerForHideLink(hide_new_city_form, new_city_div);
 
 new_city_submit.addEventListener('click', function(event){
     event.preventDefault();
@@ -460,9 +461,6 @@ function updateCityOptions(){
             createOptionsForCities(json);
         });
 }
-
-const hide_new_city_form = document.querySelector('#hide-new-city-form');
-addListenerForHideLink(hide_new_city_form, new_city_div);
 
 function addListenerForAddLink(add_link, div){
     add_link.addEventListener('click', function(event){
