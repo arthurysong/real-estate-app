@@ -71,7 +71,6 @@ class Zipcode {
         return (this.schools.reduce((total, school) => total + school.rating, 0) / this.schools.length)
     }
 }
-//a;lsdjkflaksdjf;lk;alsdkjflaksd
 
 class Home {
     constructor(json){
@@ -96,12 +95,15 @@ class School {
 
 
 
-//=============================== executables ==================================================
+//=============================== executables ======================================
+//==============================================================================
+//===============================================================================
+//=================================================================================
+
+//====================== when document finished loading ============================
 
 const city_select = document.querySelector('#city-select');
 const zipcode_select = document.querySelector('#zipcode-select');
-
-//==== when document finished loading =======================================
 
 document.addEventListener('DOMContentLoaded', function(){
     fetch('http://127.0.0.1:3000/cities')
@@ -123,7 +125,8 @@ function createOptionsForCities(json){
     }
 }
 
-// =============when city is selected and submitted = = = = = = = 
+// ============== when city is selected and submitted ===========================
+
 const city_info = document.querySelector('#city-info');
 
 city_select.addEventListener('change', function(){
@@ -136,7 +139,6 @@ city_select.addEventListener('change', function(){
                 const city = new City(json);
 
                 resetZipcodeDiv();
-
                 showZipcodeDiv();
                 displayCityInfo(city);
                 createOptionsForZipcodes(json);
@@ -229,7 +231,8 @@ function createOptionsForZipcodes(json){
 }
 
 // ============when zipcode selected and submited===============
-let curr_zipcode;
+
+let curr_zipcode; //I need this later in the code
 zipcode_select.addEventListener('change', function(){
     
     if (zipcode_select.value !== '-') {
@@ -305,9 +308,6 @@ function displayListOfHomes(zipcode){
 }
 
 function displayListOfSchools(zipcode){
-    // const schools_div = document.querySelector('#schools');
-    // schools_div.className = "";
-
     const schools_list = document.querySelector('#schools ul')
     schools_list.innerHTML = "";
     for (const school of zipcode.schools){
@@ -328,7 +328,6 @@ const homes_button = document.querySelector('#see-homes');
 const homes_div = document.querySelector('#homes');
 const schools_button = document.querySelector('#see-schools');
 const schools_div = document.querySelector('#schools');
-
 const possible_div = document.querySelector('#possible-lists');
 
 createEventListenerForButton(homes_button, homes_div);
@@ -360,9 +359,7 @@ function hideOtherDivs(current_showing_div) {
 }
 
 
-
-
-//==================add home link =======================================
+//================== add home link =======================================
 
 const add_home = document.querySelector('#add-home');
 const new_home_div = document.querySelector('#new-home-div')
@@ -408,7 +405,7 @@ new_home_submit.addEventListener('click', function(event){
         })
 })
 
-// ============================ add city listener ===========================================
+// ========================= add city listener ===========================================
 
 
 const add_city = document.querySelector('#add-city');
