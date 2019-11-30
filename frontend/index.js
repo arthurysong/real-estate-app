@@ -433,7 +433,7 @@ add_city.addEventListener('click', function(event){
     new_city_div.classList.remove('hidden');
 })
 
-const new_city_submit = document.querySelector('#new-home-submit');
+const new_city_submit = document.querySelector('#new-city-submit');
 new_city_submit.addEventListener('click', function(event){
     event.preventDefault();
     const form = new_city_div.querySelector('form');
