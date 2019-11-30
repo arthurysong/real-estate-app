@@ -434,6 +434,8 @@ hide.addEventListener('click', function(event){
 
 
 const add_city = document.querySelector('#add-city');
+const new_city_div = document.querySelector('#new-city-div');
+const new_city_submit = document.querySelector('#new-home-submit');
 add_city.addEventListener('click', function(event){
     event.preventDefault();
 
