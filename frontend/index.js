@@ -125,7 +125,7 @@ function createOptionsForCities(json){
     }
 }
 
-// ============== when city is selected and submitted ===========================
+// =========================== selecting a city ===========================
 
 const city_info = document.querySelector('#city-info');
 
@@ -230,7 +230,7 @@ function createOptionsForZipcodes(json){
     }
 }
 
-// ============when zipcode selected and submited===============
+// ======================== selecting a zipcode ============================
 
 let curr_zipcode; //I need this later in the code
 zipcode_select.addEventListener('change', function(){
@@ -322,7 +322,7 @@ function unhideButtons() {
     buttons_div.classList.remove('hidden');
 }
 
-//========================= event listeners for buttons ==================
+//========================= toggling home and school lists ==================
 
 const homes_button = document.querySelector('#see-homes');
 const homes_div = document.querySelector('#homes');
@@ -359,7 +359,7 @@ function hideOtherDivs(current_showing_div) {
 }
 
 
-//================== add home link =======================================
+//================== adding a home =======================================
 
 const add_home = document.querySelector('#add-home');
 const new_home_div = document.querySelector('#new-home-div')
@@ -405,7 +405,7 @@ new_home_submit.addEventListener('click', function(event){
         })
 })
 
-// ========================= add city listener ===========================================
+// ========================= adding a city ===========================================
 
 
 const add_city = document.querySelector('#add-city');
@@ -479,3 +479,7 @@ function refreshForm(form){
         if (input.type === 'text') input.value = '';
     }
 }
+
+
+//======================= adding a zipcode ================================
+
