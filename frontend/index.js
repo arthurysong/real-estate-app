@@ -232,7 +232,7 @@ function createOptionsForZipcodes(json){
     for (const zipcode of json.zipcodes){
         option = document.createElement('option');
         option.innerHTML = zipcode.digits
-        option.value = zipcode.id1
+        option.value = zipcode.id
         zipcode_select.appendChild(option);
     }
 }
@@ -289,10 +289,10 @@ function displayZipcodeStats(zipcode){
     const info = document.querySelector('#zipcode-info');
         info.innerHTML = 
         `
-            median home price: $${zipcode.median_homeprice}<br>
-            year built average: ${zipcode.year_built_average}<br>
-            sq ft average: ${zipcode.sqft_average}<br>
-            school rating average: ${zipcode.school_rating_average}
+            Median Property Price: $${numberWithCommas(zipcode.median_homeprice)}<br>
+            Average Year Built: ${zipcode.year_built_average}<br>
+            Average SQFT: ${numberWithCommas(zipcode.sqft_average)}<br>
+            Average School Rating: ${zipcode.school_rating_average}
         `
 }
 
