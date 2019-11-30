@@ -139,9 +139,6 @@ city_select.addEventListener('change', function(){
 
                 showZipcodeDiv();
                 displayCityInfo(city);
-                 // so when other city gets selected all elements are blank
-                // hideZipcodeDiv();
-                //blah blah test test
                 createOptionsForZipcodes(json);
             })
     } else {
@@ -426,14 +423,22 @@ function refreshForm(){
         
     }
 }
-// add listener for the hide button
+
 const hide = document.querySelector('#hide-new-home-form')
 hide.addEventListener('click', function(event){
     event.preventDefault();
     new_home_div.classList.add('hidden');
 })
 
+// ============================ add city listener ===========================================
 
+
+const add_city = document.querySelector('#add-city');
+add_city.addEventListener('click', function(event){
+    event.preventDefault();
+
+
+})
 
 
 
