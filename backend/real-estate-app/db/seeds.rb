@@ -16,20 +16,20 @@
 tucson = City.create(
     name: "Tucson",
     median_homeprice: 182300,
-    home_value_growth: 7.05
+    home_value_growth: 7.05,
     population: 1020000,
-    median_age: 38.5
+    median_age: 38.5,
     median_household_income: 51425,
-    income_growth: 8.13
-    job_growth_percentage: .849)
+    income_growth: 8.13,
+    job_growth_percentage: 0.849)
 san_bernardino = City.create(
     name: "San Bernardino", 
     median_homeprice: 202100, 
-    home_value_growth: 14.3
+    home_value_growth: 14.3,
     population: 215252,
-    median_age: 29.4 
+    median_age: 29.4, 
     median_household_income: 41027, 
-    income_growth: 6.69
+    income_growth: 6.69,
     job_growth_percentage: 2.6)
 
 #85746 zipcode seed data
