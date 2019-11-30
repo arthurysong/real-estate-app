@@ -366,10 +366,7 @@ function hideOtherDivs(current_showing_div) {
 
 const add_home = document.querySelector('#add-home');
 const new_home_div = document.querySelector('#new-home-div')
-add_home.addEventListener('click', function(event){
-    event.preventDefault();
-    new_home_div.classList.remove('hidden');
-})
+addListenerForAddLink(add_home, new_home_div);
 
 const new_home_submit = document.querySelector('#new-home-submit')
 const new_home_form = new_home_div.querySelector('form')
@@ -404,25 +401,12 @@ new_home_submit.addEventListener('click', function(event){
 
             curr_zipcode = new Zipcode (json);
             
-            displayAllZipcodeInfo(curr_zipcode);  
-            //refresh form
+            displayAllZipcodeInfo(curr_zipcode);
             refreshForm(new_home_form);  
         })
 })
 
-function refreshForm(form){
-    const inputs = form.querySelectorAll('input');
-    for (const input of inputs){
-        if (input.type === 'text') input.value = '';
-        
-    }
-}
-
 const hide_new_home_form = document.querySelector('#hide-new-home-form')
-// hide.addEventListener('click', function(event){
-//     event.preventDefault();
-//     new_home_div.classList.add('hidden');
-// })
 addListenerForHideLink(hide_new_home_form, new_home_div);
 
 // ============================ add city listener ===========================================
@@ -430,10 +414,7 @@ addListenerForHideLink(hide_new_home_form, new_home_div);
 
 const add_city = document.querySelector('#add-city');
 const new_city_div = document.querySelector('#new-city-div');
-add_city.addEventListener('click', function(event){
-    event.preventDefault();
-    new_city_div.classList.remove('hidden');
-})
+addListenerForAddLink(add_city, new_city_div);
 
 const new_city_submit = document.querySelector('#new-city-submit');
 const new_city_form = new_city_div.querySelector('form');
@@ -483,6 +464,13 @@ function updateCityOptions(){
 const hide_new_city_form = document.querySelector('#hide-new-city-form');
 addListenerForHideLink(hide_new_city_form, new_city_div);
 
+function addListenerForAddLink(add_link, div){
+    add_link.addEventListener('click', function(event){
+        event.preventDefault();
+        div.classList.remove('hidden');
+    })  
+}
+
 function addListenerForHideLink(hide_link, div){
     hide_link.addEventListener('click', function(event){
         event.preventDefault();
@@ -490,3 +478,9 @@ function addListenerForHideLink(hide_link, div){
     })
 }
 
+function refreshForm(form){
+    const inputs = form.querySelectorAll('input');
+    for (const input of inputs){
+        if (input.type === 'text') input.value = '';
+    }
+}
