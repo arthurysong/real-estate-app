@@ -102,16 +102,16 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(json => {
             console.log(json)
 
-            createOptionsForCities(json);
+            createOptionsForCities(json, city_select);
         });
 })
 
-function createOptionsForCities(json){
+function createOptionsForCities(json, select){
     for (const city of json) {
         const option = document.createElement('option')
         option.innerHTML = city.name;
         option.value = city.id;
-        city_select.appendChild(option);
+        select.appendChild(option);
     }
 }
 
@@ -523,9 +523,40 @@ function updateZipcodeOptions(){
 // ======================== comparing cities ==============================
 
 const compare_city_link = document.querySelector('#compare-link');
+const container2 = document.querySelector('#container2');
+const city_select2 = document.querySelector('#city-select2');
 
 compare_city_link.addEventListener('click', function(event){
     event.preventDefault();
     
     show_container2();
+
+    fetch('http://127.0.0.1:3000/cities')
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json)
+
+            createOptionsForCities(json, city_select2);
+        });
+})
+
+function show_container2(){
+    container2.classList.remove('hidden');
+}
+
+city_select2.addEventListener('change', function(){
+    if (city_select.value !== '-') {
+        fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+
+                const city = new City(json);
+
+                displayCityInfo(city);
+                createOptionsForZipcodes(json.zipcodes);
+            })
+    } else {
+        makeCityInfoBlank();
+    }
 })
