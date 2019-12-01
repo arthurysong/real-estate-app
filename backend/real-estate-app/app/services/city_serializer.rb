@@ -9,7 +9,7 @@ class CitySerializer
                 zipcodes: {
                     only: [:digits]
                 }
-            }
+            },
             except: [:updated_at, :created_at]
         }
         @city.to_json(options)

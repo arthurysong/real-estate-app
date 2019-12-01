@@ -1,12 +1,12 @@
 class CitiesController < ApplicationController
     def show
         city = City.find(params[:id])
-        render json: city, include: [:zipcodes]
+        render json: CitySerializer.new(city).to_serialized_json
     end
 
     def index
         cities = City.all
-        render json: cities
+        render json: CitySerializer.new(cities).to_serialized_json
     end
 
     def create
@@ -20,6 +20,6 @@ class CitiesController < ApplicationController
             income_growth: params[:income_growth],
             job_growth_percentage: params[:job_growth_percentage]
         )
-        render json: city, include: [:zipcodes]
+        render json: CitySerializer.new(city).to_serialized_json
     end
 end
