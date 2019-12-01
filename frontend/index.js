@@ -533,11 +533,15 @@ const city_info2 = document.querySelector('#city-info2')
 compare_city_link.addEventListener('click', function(event){
     event.preventDefault();
     
-    show_container2();
+    toggle_container2();
 })
 
-function show_container2(){
-    container2.classList.remove('hidden');
+function toggle_container2(){
+    if (container2.classList.contains('hidden')) {
+        container2.classList.remove('hidden');
+    } else {
+        container2.classList.add('hidden');
+    }
 }
 
 city_select2.addEventListener('change', function(){
