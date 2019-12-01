@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log(json)
 
             createOptionsForCities(json, city_select);
+            createOptionsForCities(json, city_select2);
         });
 })
 
@@ -442,10 +443,12 @@ new_city_submit.addEventListener('click', function(event){
 
 function updateCityOptions(){
     city_select.innerHTML = `<option val='-'>-</option>`;
+    city_select2.innerHTML = `<option val='-'>-</option>`;
     fetch('http://127.0.0.1:3000/cities')
         .then(resp => resp.json())
         .then(json => {
-            createOptionsForCities(json);
+            createOptionsForCities(json, city_select);
+            createOptionsForCities(json, city_select2);
         });
 }
 
@@ -531,14 +534,6 @@ compare_city_link.addEventListener('click', function(event){
     event.preventDefault();
     
     show_container2();
-
-    fetch('http://127.0.0.1:3000/cities')
-        .then(resp => resp.json())
-        .then(json => {
-            console.log(json)
-
-            createOptionsForCities(json, city_select2);
-        });
 })
 
 function show_container2(){
