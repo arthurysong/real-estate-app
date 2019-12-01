@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function(){
     fetch('http://127.0.0.1:3000/cities')
         .then(resp => resp.json())
         .then(json => {
-
             console.log(json)
 
             createOptionsForCities(json);
@@ -520,3 +519,13 @@ function updateZipcodeOptions(){
             createOptionsForZipcodes(json.zipcodes);
         });
 }
+
+// ======================== comparing cities ==============================
+
+const compare_city_link = document.querySelector('#compare-link');
+
+compare_city_link.addEventListener('click', function(event){
+    event.preventDefault();
+    
+    show_container2();
+})
