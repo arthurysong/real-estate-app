@@ -130,11 +130,11 @@ city_select.addEventListener('change', function(){
 
                 resetZipcodeDiv();
                 showZipcodeDiv();
-                displayCityInfo(city);
+                displayCityInfo(city, city_info);
                 createOptionsForZipcodes(json.zipcodes);
             })
     } else {
-        makeCityInfoBlank();
+        makeCityInfoBlank(city_info);
         resetZipcodeDiv();
     }
 })
@@ -178,9 +178,9 @@ function makeZipcodeInfoBlank(){
     p.innerHTML = '';
 }
 
-function makeCityInfoBlank(){
-    city_info.querySelector('h1').innerHTML = '';
-    city_info.querySelector('p').innerHTML = '';    
+function makeCityInfoBlank(city_div){
+    city_div.querySelector('h1').innerHTML = '';
+    city_div.querySelector('p').innerHTML = '';    
 }
 
 function showZipcodeDiv(){
@@ -193,10 +193,10 @@ function hideZipcodeDiv(){
     div.classList.add('hidden');
 }
 
-function displayCityInfo(city) {
+function displayCityInfo(city, city_div) {
     city_info.classList.remove('hidden');    
-    const h1 = document.querySelector('#city h1');
-    const p = document.querySelector('#city p');
+    const h1 = city_div.querySelector('h1');
+    const p = city_div.querySelector('p');
     
     h1.innerHTML = city.name;
     p.innerHTML = 
@@ -525,6 +525,7 @@ function updateZipcodeOptions(){
 const compare_city_link = document.querySelector('#compare-link');
 const container2 = document.querySelector('#container2');
 const city_select2 = document.querySelector('#city-select2');
+const city_info2 = document.querySelector('#city-info2')
 
 compare_city_link.addEventListener('click', function(event){
     event.preventDefault();
@@ -545,18 +546,17 @@ function show_container2(){
 }
 
 city_select2.addEventListener('change', function(){
-    if (city_select.value !== '-') {
-        fetch(`http://127.0.0.1:3000/cities/${city_select.value}`)
+    if (city_select2.value !== '-') {
+        fetch(`http://127.0.0.1:3000/cities/${city_select2.value}`)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
 
                 const city = new City(json);
 
-                displayCityInfo(city);
-                createOptionsForZipcodes(json.zipcodes);
+                displayCityInfo(city, city_info2);
             })
     } else {
-        makeCityInfoBlank();
+        makeCityInfoBlank(city_info2);
     }
 })
