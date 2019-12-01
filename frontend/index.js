@@ -377,7 +377,7 @@ new_home_submit.addEventListener('click', function(event){
         zipcode_id: document.querySelector('#zipcode-select').value,
         address: new_home_form.querySelector('#address').value,
         bathrooms: new_home_form.querySelector('#bathrooms').value,
-        bedrooms: new_home_form.querySelector('#price').value,
+        bedrooms: new_home_form.querySelector('#bedrooms').value,
         price: new_home_form.querySelector('#price').value,
         sqft: new_home_form.querySelector('#sqft').value,
         year_built: new_home_form.querySelector('#year-built').value,
