@@ -1,7 +1,7 @@
 class ZipcodesController < ApplicationController
     def show
         zipcode = Zipcode.find(params[:id])
-        render json: zipcode, include: [:schools, :homes]
+        render json: ZipcodeSerializer.new(zipcode).to_serialized_json
     end
 
     def create
@@ -10,6 +10,6 @@ class ZipcodesController < ApplicationController
             city: city,
             digits: params[:digits]
         )
-        render json: zipcode, include: [:schools, :homes]
+        render json: ZipcodeSerializer.new(zipcode).to_serialized_json
     end
 end

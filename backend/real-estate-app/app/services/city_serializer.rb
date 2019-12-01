@@ -7,7 +7,7 @@ class CitySerializer
         options = {
             include: {
                 zipcodes: {
-                    only: [:digits]
+                    except: [:updated_at, :created_at, :city_id]
                 }
             },
             except: [:updated_at, :created_at]

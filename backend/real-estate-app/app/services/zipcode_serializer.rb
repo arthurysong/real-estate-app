@@ -15,6 +15,6 @@ class ZipcodeSerializer
             },
             except: [:updated_at, :created_at]
         }
-        @zipcode.to_json(opions)
+        @zipcode.to_json(options)
     end
 end
