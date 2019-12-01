@@ -1,16 +1,7 @@
-// classes info --------------------------------------------------------------
+//============================ classes ===================================
 
 class City {
     constructor (json) {
-        
-    // name: "Tucson",
-    // median_homeprice: 182300,
-    // home_value_growth: 7.05,
-    // population: 1020000,
-    // median_age: 38.5,
-    // median_household_income: 51425,
-    // income_growth: 8.13,
-    // job_growth_percentage: 0.849)
         this.name = json.name;
         this.median_household_income = json.median_household_income;
         this.income_growth = json.income_growth;
