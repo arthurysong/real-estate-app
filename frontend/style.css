@@ -20,10 +20,20 @@ a {
     color: #ffcccc;
 }
 
-#container {
-    width: 300px;
+#tanker {
+    width: 600px;
 
     margin: 100px auto;
+}
+
+#container1{
+    float: left;
+    width: 50%;
+}
+
+#container2{
+    float: left;
+    width: 50%;
 }
 
 ul {
