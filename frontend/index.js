@@ -119,6 +119,9 @@ function createOptionsForCities(json, select){
 // =========================== selecting a city ===========================
 
 const city_info = document.querySelector('#city-info');
+const possible_lists = document.querySelector('#possible-lists');
+const buttons_div = document.querySelector('#zipcode-info-buttons');
+const zipcode_div = document.querySelector('#zipcode');
 
 city_select.addEventListener('change', function(){
     if (city_select.value !== '-') {
@@ -141,12 +144,16 @@ city_select.addEventListener('change', function(){
 })
 
 function resetZipcodeDiv(){
-    hideZipcodeDiv();
     resetZipcodeSelect();
     makeZipcodeInfoBlank();
-    hideButtons();
-    hideLists();
+    hideDiv(zipcode_div);
+    hideDiv(possible_lists);
+    hideDiv(buttons_div);
     resetLists();
+}
+
+function hideDiv(div){
+    div.classList.add('hidden');
 }
 
 function resetLists(){
@@ -160,17 +167,15 @@ function resetZipcodeSelect(){
     zipcode_select.innerHTML = `<option val='-'>-</option>`
 }
 
-function hideLists(){
-    const homes_div = document.querySelector('#homes');
-    const schools_div = document.querySelector('#schools');
-    homes_div.classList.add('hidden');
-    schools_div.classList.add('hidden');
-}
+// function hideLists(){
+//     homes_div.classList.add('hidden');
+//     schools_div.classList.add('hidden');
+// }
 
-function hideButtons(){
-    const buttons_div = document.querySelector('#zipcode-info-buttons');
-    buttons_div.classList.add('hidden');
-}
+// function hideButtons(){
+    
+//     buttons_div.classList.add('hidden');
+// }
 
 function makeZipcodeInfoBlank(){
     const h3 = document.querySelector('#zipcode-header');
@@ -189,10 +194,9 @@ function showZipcodeDiv(){
     div.classList.remove('hidden');
 }
 
-function hideZipcodeDiv(){
-    const div = document.querySelector('#zipcode');
-    div.classList.add('hidden');
-}
+// function hideZipcodeDiv(){
+//     div.classList.add('hidden');
+// }
 
 function displayCityInfo(city, city_div) {
     city_info.classList.remove('hidden');    
@@ -253,8 +257,10 @@ function displayAllZipcodeInfo(zipcode){
 
 function resetZipcodeInfo(){
     makeZipcodeInfoBlank();
-    hideButtons();
-    hideLists();
+    hideDiv(buttons_div);
+    hideDiv(possible_lists);
+    // hideButtons();
+    // hideLists();
     resetLists();
 }
 
@@ -536,7 +542,7 @@ compare_city_link.addEventListener('click', function(event){
     toggle_container2();
 })
 
-function toggle_container2(){
+function toggle_container2(){ //i have div toggle function already
     if (container2.classList.contains('hidden')) {
         container2.classList.remove('hidden');
     } else {
