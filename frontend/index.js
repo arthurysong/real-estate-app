@@ -136,11 +136,11 @@ city_select.addEventListener('change', function(){
 
                 resetZipcodeDiv();
                 unhideDiv(zipcode_div);
-                displayCityInfo(city);
+                displayCityInfo(city, city_info);
                 createOptionsForZipcodes(json.zipcodes);
             })
     } else {
-        makeCityInfoBlank();
+        makeCityInfoBlank(city_info);
         resetZipcodeDiv();
     }
 })
@@ -180,16 +180,20 @@ function makeZipcodeInfoBlank(){
     zipcode_div.querySelector('p').innerHTML = '';
 }
 
-function makeCityInfoBlank(){
-    city_info_h1.innerHTML = '';
-    city_info_p.innerHTML = '';
+function makeCityInfoBlank(city_info){
+    const h1 = city_info.querySelector('h1');
+    const p = city_info.querySelector('p');
+    h1.innerHTML = '';
+    p.innerHTML = '';
 }
 
-function displayCityInfo(city) {
+function displayCityInfo(city, city_info) {
     unhideDiv(city_info);
+    const h1 = city_info.querySelector('h1');
+    const p = city_info.querySelector('p');
 
-    city_info_h1.innerHTML = city.name;
-    city_info_p.innerHTML = 
+    h1.innerHTML = city.name;
+    p.innerHTML = 
         `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
         Job Growth: ${city.job_growth_percentage}%<br>
         Population: ${numberWithCommas(city.population)}<br>
