@@ -122,6 +122,8 @@ const city_info = document.querySelector('#city-info');
 const possible_lists = document.querySelector('#possible-lists');
 const buttons_div = document.querySelector('#zipcode-info-buttons');
 const zipcode_div = document.querySelector('#zipcode');
+const city_div_h1 = city_info.querySelector('h1').innerHTML = '';
+const city_div_p = city_info.querySelector('p').innerHTML = '';    
 
 city_select.addEventListener('change', function(){
     if (city_select.value !== '-') {
@@ -133,12 +135,12 @@ city_select.addEventListener('change', function(){
                 const city = new City(json);
 
                 resetZipcodeDiv();
-                showZipcodeDiv();
-                displayCityInfo(city, city_info);
+                unhideDiv(zipcode_div);
+                displayCityInfo(city);
                 createOptionsForZipcodes(json.zipcodes);
             })
     } else {
-        makeCityInfoBlank(city_info);
+        makeCityInfoBlank();
         resetZipcodeDiv();
     }
 })
@@ -156,6 +158,10 @@ function hideDiv(div){
     div.classList.add('hidden');
 }
 
+function unhideDiv(div){
+    div.classList.remove('hidden');
+}
+
 function resetLists(){
     const homes_list = document.querySelector('#homes ul');
     const schools_list = document.querySelector('#schools ul');
@@ -167,44 +173,21 @@ function resetZipcodeSelect(){
     zipcode_select.innerHTML = `<option val='-'>-</option>`
 }
 
-// function hideLists(){
-//     homes_div.classList.add('hidden');
-//     schools_div.classList.add('hidden');
-// }
-
-// function hideButtons(){
-    
-//     buttons_div.classList.add('hidden');
-// }
-
-function makeZipcodeInfoBlank(){
-    const h3 = document.querySelector('#zipcode-header');
-    const p = document.querySelector('#zipcode-info');
-    h3.innerHTML = '';
-    p.innerHTML = '';
+function makeZipcodeInfoBlank(zipcode_div){
+    zipcode_div.querySelector('h3').innerHTML = '';
+    zipcode_div.querySelector('p').innerHTML = '';
 }
 
-function makeCityInfoBlank(city_div){
-    city_div.querySelector('h1').innerHTML = '';
-    city_div.querySelector('p').innerHTML = '';    
+function makeCityInfoBlank(){
+    city_info_h1.innerHTML = '';
+    city_info_p.innerHTML = '';
 }
 
-function showZipcodeDiv(){
-    const div = document.querySelector('#zipcode');
-    div.classList.remove('hidden');
-}
+function displayCityInfo(city) {
+    unhideDiv(city_info)
 
-// function hideZipcodeDiv(){
-//     div.classList.add('hidden');
-// }
-
-function displayCityInfo(city, city_div) {
-    city_info.classList.remove('hidden');    
-    const h1 = city_div.querySelector('h1');
-    const p = city_div.querySelector('p');
-    
-    h1.innerHTML = city.name;
-    p.innerHTML = 
+    city_info_h1.innerHTML = city.name;
+    city_info_p.innerHTML = 
         `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
         Job Growth: ${city.job_growth_percentage}%<br>
         Population: ${numberWithCommas(city.population)}<br>
@@ -259,8 +242,6 @@ function resetZipcodeInfo(){
     makeZipcodeInfoBlank();
     hideDiv(buttons_div);
     hideDiv(possible_lists);
-    // hideButtons();
-    // hideLists();
     resetLists();
 }
 
