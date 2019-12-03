@@ -167,6 +167,8 @@ function resetLists(){
     const schools_list = document.querySelector('#schools ul');
     homes_list.innerHTML = '';
     schools_list.innerHTML = '';
+    hideDiv(homes_div);
+    hideDiv(schools_div);
 }
 
 function resetZipcodeSelect(){
@@ -185,7 +187,7 @@ function makeCityInfoBlank(){
 
 function displayCityInfo(city) {
     unhideDiv(city_info);
-    
+
     city_info_h1.innerHTML = city.name;
     city_info_p.innerHTML = 
         `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
@@ -211,6 +213,7 @@ function createOptionsForZipcodes(zipcodes){
 // ======================== selecting a zipcode ============================
 
 let curr_zipcode; //I need this later in the code
+
 zipcode_select.addEventListener('change', function(){
     
     if (zipcode_select.value !== '-') {
@@ -221,7 +224,7 @@ zipcode_select.addEventListener('change', function(){
                 
                 curr_zipcode = new Zipcode(json);
                 resetZipcodeInfo();
-                
+
                 displayAllZipcodeInfo(curr_zipcode);
             })
     } else {
@@ -230,8 +233,8 @@ zipcode_select.addEventListener('change', function(){
 })
 
 function displayAllZipcodeInfo(zipcode){
-    // unhideHeaders();
-    unhideButtons();
+    unhideDiv(possible_lists);
+    unhideDiv(buttons_div);
     displayZipcodeStats(zipcode);
     displayZipcodeHeader(zipcode);
     displayListOfHomes(zipcode);
@@ -243,13 +246,6 @@ function resetZipcodeInfo(){
     hideDiv(buttons_div);
     hideDiv(possible_lists);
     resetLists();
-}
-
-function unhideHeaders(){
-    const h6 = document.querySelector('#homes-sold')
-    h6.style.display = 'block';
-    const schoolh6 = document.querySelector('#schools-header');
-    schoolh6.style.display = 'block';
 }
 
 function displayZipcodeHeader(zipcode){
@@ -270,6 +266,7 @@ function displayZipcodeStats(zipcode){
 
 function displayListOfHomes(zipcode){
     const homes_list = document.querySelector('#homes ul')
+    
     homes_list.innerHTML = "";
     for (const home of zipcode.homes) {
         const li = document.createElement('li');
@@ -287,6 +284,7 @@ function displayListOfHomes(zipcode){
 
 function displayListOfSchools(zipcode){
     const schools_list = document.querySelector('#schools ul')
+    
     schools_list.innerHTML = "";
     for (const school of zipcode.schools){
         const li = document.createElement('li');
@@ -295,10 +293,10 @@ function displayListOfSchools(zipcode){
     }
 }
 
-function unhideButtons() {
-    const buttons_div = document.querySelector('#zipcode-info-buttons');
-    buttons_div.classList.remove('hidden');
-}
+// function unhideButtons() {
+//     const buttons_div = document.querySelector('#zipcode-info-buttons');
+//     buttons_div.classList.remove('hidden');
+// }
 
 //========================= toggling home and school lists ==================
 
@@ -520,16 +518,8 @@ const city_info2 = document.querySelector('#city-info2')
 compare_city_link.addEventListener('click', function(event){
     event.preventDefault();
     
-    toggle_container2();
+    toggleDiv(container2);
 })
-
-function toggle_container2(){ //i have div toggle function already
-    if (container2.classList.contains('hidden')) {
-        container2.classList.remove('hidden');
-    } else {
-        container2.classList.add('hidden');
-    }
-}
 
 city_select2.addEventListener('change', function(){
     if (city_select2.value !== '-') {
