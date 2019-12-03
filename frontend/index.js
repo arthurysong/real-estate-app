@@ -122,8 +122,8 @@ const city_info = document.querySelector('#city-info');
 const possible_lists = document.querySelector('#possible-lists');
 const buttons_div = document.querySelector('#zipcode-info-buttons');
 const zipcode_div = document.querySelector('#zipcode');
-const city_div_h1 = city_info.querySelector('h1').innerHTML = '';
-const city_div_p = city_info.querySelector('p').innerHTML = '';    
+const city_info_h1 = city_info.querySelector('h1');
+const city_info_p = city_info.querySelector('p');    
 
 city_select.addEventListener('change', function(){
     if (city_select.value !== '-') {
@@ -173,7 +173,7 @@ function resetZipcodeSelect(){
     zipcode_select.innerHTML = `<option val='-'>-</option>`
 }
 
-function makeZipcodeInfoBlank(zipcode_div){
+function makeZipcodeInfoBlank(){
     zipcode_div.querySelector('h3').innerHTML = '';
     zipcode_div.querySelector('p').innerHTML = '';
 }
@@ -184,8 +184,8 @@ function makeCityInfoBlank(){
 }
 
 function displayCityInfo(city) {
-    unhideDiv(city_info)
-
+    unhideDiv(city_info);
+    
     city_info_h1.innerHTML = city.name;
     city_info_p.innerHTML = 
         `Median Household Income: $${numberWithCommas(city.median_household_income)} (${city.income_growth}% Growth)<br>
@@ -230,7 +230,7 @@ zipcode_select.addEventListener('change', function(){
 })
 
 function displayAllZipcodeInfo(zipcode){
-    unhideHeaders();
+    // unhideHeaders();
     unhideButtons();
     displayZipcodeStats(zipcode);
     displayZipcodeHeader(zipcode);
