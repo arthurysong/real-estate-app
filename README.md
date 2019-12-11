@@ -14,3 +14,5 @@ The app allows basic create and read functionality of a city, zipcode, and schoo
 All other CRUD functions must be done through the console..
 
 Finally, the user can compare the profiles of two different cities, by clicking the compare link.
+
+As of now, Tucson is the most detailed city to look into. (It has several zipcodes and also many homes and schools)
