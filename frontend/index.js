@@ -83,7 +83,39 @@ class School {
 }
 
 
+//=============== assessment coding live ====================
 
+// const sortButton = document.querySelector('#sort-cities');
+
+// sortButton.addEventListener('click', function(){
+//     console.log('I was clicked!');
+//     fetch('http://127.0.0.1:3000/cities')
+//         .then(resp => resp.json())
+//         .then(json => {
+            
+//             const sorted_cities = json.sort(function(a, b){
+//                 var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+//                 var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+//                 if (nameA < nameB) {
+//                     return -1;
+//                 }
+//                 if (nameA > nameB) {
+//                     return 1;
+//                 }
+
+//                 // names must be equal
+//                 return 0;
+//             })
+            
+//             console.log(sorted_cities);
+//             const orderedCities = document.querySelector('#ordered-cities');
+//             for (const city of sorted_cities) {
+//                 const li = document.createElement('li');
+//                 li.innerHTML = city.name;
+//                 orderedCities.appendChild(li);
+//             }
+//         })
+// })
 
 
 //=============================== executables ======================================
