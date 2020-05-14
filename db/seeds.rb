@@ -62,8 +62,8 @@ colorado_springs = City.create(
 #85746 zipcode seed data
 zip_code_1 = Zipcode.create(city: tucson, digits: 85746)
 zip_code_2 = Zipcode.create(city: tucson, digits: 85747)
-zip_code_3 = Zipcode.create(city: san_bernardino: digits: 92346)
-zip_code_3 = Zipcode.create(city: san_bernardino: digits: 92407)
+zip_code_3 = Zipcode.create(city: san_bernardino, digits: 92346)
+zip_code_3 = Zipcode.create(city: san_bernardino, digits: 92407)
 
 home_1 = Home.create(zipcode: zip_code_1, date_sold: Date.new(2019, 11, 12), price: 175000, address: "3037 W Utah St, Tucson, AZ 85746", bedrooms: 3, bathrooms: 2, sqft: 1071, year_built: 1977 );
 home_2 = Home.create(zipcode: zip_code_1, date_sold: Date.new(2019, 11, 7), price: 198500, address: "3627 W Avenida Fria, Tucson, AZ 85746", bedrooms: 3, bathrooms: 3, sqft: 1516, year_built: 1993 );
