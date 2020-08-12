@@ -1,13 +1,30 @@
-### Citidex
+# Citidex
 
-This app is meant to be used as an aid for investing in real estate.
+## Description
 
-The app keep tracks of profiles of different cities in the US. Each city will have info like the median household income, the median age, and median household property value, giving the user a general condition, value, and overview of a city.
+RESTful API used to manage resources for Citidex website. Built using Ruby on Rails. 
 
-Cities have zipcodes, which users can delve deeper into. Zipcodes have homes sold recently in the area as well as schools in the area. A zipcode will display info like the median household income calculated from the homes sold.
+Checkout the [front end](https://github.com/arthurysong/citidex-frontend) for Citidex.
 
-The app allows basic create and read functionality of a city, zipcode, and schools. All other CRUD functions must be done through the console..
+[Deployed application](https://citidex.herokuapp.com/)
 
-Finally, the user can compare the profiles of two different cities, by clicking the compare link.
+## Screenshot
 
-As of now, Tucson is the most detailed city to look into. (It has several zipcodes and also many homes and schools)
+![screenshot](citidex.jpg)
+
+## Endpoints 
+
+|   Name    |     Resource     |       Path         | HTTP Verb |                     Purpose                     |
+| :-------: | :--------------: | :----------------: | :-------: | :---------------------------------------------: |
+|   Create  |      Home        |   /homes/          |    POST   |               Create new home                   |
+|   Show    |      Zipcode     |   /zipcodes/:id    |    GET    |              Displays single zipcode            |
+|   Create  |      Zipcode     |   /zipcodes        |    POST   |              Create new zipcode                 |
+|   Show    |      Cities      |   /cities/:id      |    GET    |              Displays single city               |
+|   Index   |      Cities      |   /cities          |    GET    |              Displays all cities                |
+|   Create  |      Cities      |   /cities          |    POST   |                Create new city                  |
+
+## Development
+
+- Fork the repository and clone it to your machine
+- Run `bundle install` to download dependencies
+- Run API using `rails s`
